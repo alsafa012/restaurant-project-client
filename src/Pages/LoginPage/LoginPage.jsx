@@ -1,30 +1,61 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const LoginPage = () => {
      const [showPassword, setShowPassword] = useState(false);
-     const handleGoogleSignIn = ()=>{
-          console.log('google login');
+     const { user, userSignIn } = useContext(AuthContext);
+     const [errorMessage, setErrorMessage] = useState(false);
+     const handleGoogleSignIn = () => {
+          console.log("google login");
           return Swal.fire(
                "Good job!",
                "You Signed In With Google Successfully",
                "success"
           );
-     }
+     };
      const handleLogin = (e) => {
+          if (user) {
+              return Swal.fire({
+                    title: "Error!",
+                    text: "user already logged in",
+                    icon: "error",
+                    confirmButtonText: "Cool",
+               });
+             ;
+          }
           e.preventDefault();
           const form = e.target;
           const email = form.email.value;
           const password = form.password.value;
           console.log(email, password);
+          userSignIn(email, password)
+          .then((result) => {
+               // navigate(location?.state ? location.state : "/");
+               console.log(result.user);
+               Swal.fire(
+                    "Good job!",
+                    "User login successfully",
+                    "success"
+               );
+
+               e.target.email.value = "";
+               e.target.password.value = "";
+          })
+          .catch((error) => {
+               console.log(error);
+               setErrorMessage(
+                    "User login failed..! Invalid email or password"
+               );
+          });
      };
      return (
           <div>
                <div>
                     <p className="text-3xl font-bold mb-6 text-center text-blue-500 mt-5">
-                         Login Page
+                         Login Here..
                     </p>
                     <form
                          onSubmit={handleLogin}
@@ -74,7 +105,13 @@ const LoginPage = () => {
                                    )}
                               </span>
                          </div>
-                         <h3></h3>
+                         <h3>
+                              {errorMessage && (
+                                   <p className="text-red-600 pt-1">
+                                        {errorMessage}
+                                   </p>
+                              )}
+                         </h3>
                          <div className="form-control mt-6">
                               <button className="btn text-white bg-gradient-to-r from-blue-900 to-blue-900">
                                    Login
@@ -83,7 +120,7 @@ const LoginPage = () => {
 
                          <div className="form-control w-[300px] mx-auto text-center mt-6">
                               <button
-                              onClick={handleGoogleSignIn}
+                                   onClick={handleGoogleSignIn}
                                    type="button"
                                    className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg btn inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
                               >
@@ -103,8 +140,8 @@ const LoginPage = () => {
                     <p className="text-center py-4">
                          Do not Have An Account ?
                          <Link
-                              className="text-green-300 font-bold hover:underline ml-1"
-                              to="/register"
+                              className="text-red-300 font-bold hover:underline ml-1"
+                              to="/registration"
                          >
                               Sign Up
                          </Link>
