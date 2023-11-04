@@ -17,6 +17,10 @@ const myCreatedRouter = createBrowserRouter([
                     element: <Home></Home>,
                },
                {
+                    path: "/addProduct",
+                    element: <Home></Home>,
+               },
+               {
                     path: "/login",
                     element: <LoginPage></LoginPage>,
                },

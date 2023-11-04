@@ -1,10 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
      return (
-          <div>
-               <div className="container mx-auto">
+          <div className="container mx-auto">
+               <div className="mt-5 md:mt-10">
                     <div className="flex justify-center items-center gap-2 md:gap-5">
                          <img
                               className=" w-[100px] lg:w-[300px] h-[120px] lg:h-[300px] object-fill"

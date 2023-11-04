@@ -1,9 +1,12 @@
-import React from 'react';
+
+import Counter from '../../Components/CountingSection/Counter';
+import Footer from '../../Components/Footer/Footer';
 
 const Home = () => {
      return (
           <div>
-               home
+              <Counter></Counter>
+              <Footer></Footer>
           </div>
      );
 };
