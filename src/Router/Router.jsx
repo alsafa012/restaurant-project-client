@@ -36,13 +36,13 @@ const myCreatedRouter = createBrowserRouter([
                          </PrivateRoute>
                     ),
 
-                    loader: () => fetch("http://localhost:5000/allFoodsCount"),
+                    loader: () => fetch("https://restaurant-project-server.vercel.app/allFoodsCount"),
                },
                {
                     path: "/details/:id",
                     element: <ShowSingleFood></ShowSingleFood>,
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allfoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allfoods/${params.id}`),
                },
                {
                     path: "/login",
