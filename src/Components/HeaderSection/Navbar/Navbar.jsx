@@ -136,8 +136,8 @@ const Navbar = () => {
      );
      return (
           <div>
-               <div>
-                    <div className=" navbar bg-black ">
+               <div className="bg-black">
+                    <div className=" navbar bg-black container mx-auto">
                          {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                          <div className="navbar-start">
                               <div className="dropdown">
