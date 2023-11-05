@@ -15,7 +15,7 @@ const PrivateRoute = ({ children }) => {
                </div>
           );
      }
-     if (user.email) {
+     if (user) {
           return children;
      }
      return <Navigate state={location.pathname} to="/login"></Navigate>;

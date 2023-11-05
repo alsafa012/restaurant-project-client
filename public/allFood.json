@@ -6,7 +6,8 @@
           "price": "$15.99",
           "made_by": "Chef Hiroshi",
           "food_origin": "Japan",
-          "description": "Sushi is a traditional Japanese dish that consists of vinegared rice topped with various ingredients, including fresh seafood, vegetables, and occasionally tropical fruits. It is often served with soy sauce, pickled ginger, and wasabi."
+          "description": "Sushi is a traditional Japanese dish that consists of vinegared rice topped with various ingredients, including fresh seafood, vegetables, and occasionally tropical fruits. It is often served with soy sauce, pickled ginger, and wasabi.",
+          "quantity":"10"
      },
      {
           "food_name": "Chocolate Cake",
@@ -15,7 +16,8 @@
           "price": "$6.99",
           "made_by": "Bakery Delights",
           "food_origin": "Various",
-          "description": "Chocolate cake is a rich and indulgent dessert made with cocoa, sugar, eggs, and flour. It's often frosted with chocolate ganache or buttercream."
+          "description": "Chocolate cake is a rich and indulgent dessert made with cocoa, sugar, eggs, and flour. It's often frosted with chocolate ganache or buttercream.",
+          "quantity":"10"
      },
      {
           "food_name": "Strawberry Cheesecake",
@@ -24,7 +26,8 @@
           "price": "$8.99",
           "made_by": "Sweet Sensations",
           "food_origin": "United States",
-          "description": "Strawberry cheesecake is a delightful dessert featuring a creamy cheesecake filling on a graham cracker crust, topped with fresh strawberry compote."
+          "description": "Strawberry cheesecake is a delightful dessert featuring a creamy cheesecake filling on a graham cracker crust, topped with fresh strawberry compote.",
+          "quantity":"10"
      },
      {
           "food_name": "Tiramisu",
@@ -33,7 +36,8 @@
           "price": "$7.50",
           "made_by": "Chef Lucia",
           "food_origin": "Italy",
-          "description": "Tiramisu is a classic Italian dessert made with layers of coffee-soaked ladyfingers and a mascarpone cheese mixture, dusted with cocoa powder. It's a heavenly treat for coffee and dessert lovers."
+          "description": "Tiramisu is a classic Italian dessert made with layers of coffee-soaked ladyfingers and a mascarpone cheese mixture, dusted with cocoa powder. It's a heavenly treat for coffee and dessert lovers.",
+          "quantity":"10"
      },
      {
           "food_name": "Creme Brulee",
@@ -42,7 +46,8 @@
           "price": "$9.99",
           "made_by": "Chef Pierre",
           "food_origin": "France",
-          "description": "Crème brûlée is a classic French dessert consisting of rich custard topped with a layer of caramelized sugar. The contrast of the creamy custard and the crisp caramel is simply divine."
+          "description": "Crème brûlée is a classic French dessert consisting of rich custard topped with a layer of caramelized sugar. The contrast of the creamy custard and the crisp caramel is simply divine.",
+          "quantity":"10"
      },
      {
           "food_name": "Gelato",
@@ -51,7 +56,8 @@
           "price": "$5.50",
           "made_by": "Gelateria Lucia",
           "food_origin": "Italy",
-          "description": "Gelato is a smooth and creamy Italian ice cream made with less fat than traditional ice cream. It comes in a variety of flavors, from classic chocolate and vanilla to unique fruity combinations."
+          "description": "Gelato is a smooth and creamy Italian ice cream made with less fat than traditional ice cream. It comes in a variety of flavors, from classic chocolate and vanilla to unique fruity combinations.",
+          "quantity":"10"
      },
      {
           "food_name": "Beef Dumpling Stew",
@@ -60,7 +66,8 @@
           "price": "$5.50",
           "made_by": "Gelateria Lucia",
           "food_origin": "British",
-          "description": "Beef Stroganoff is a Russian dish made with tender strips of beef, mushrooms, onions, and a rich sour cream sauce. It's traditionally served over egg noodles or rice."
+          "description": "Beef Stroganoff is a Russian dish made with tender strips of beef, mushrooms, onions, and a rich sour cream sauce. It's traditionally served over egg noodles or rice.",
+          "quantity":"10"
      },
      {
           "food_name": "Beef Stroganoff",
@@ -69,7 +76,8 @@
           "price": "$14.99",
           "made_by": "Chef Alexander",
           "food_origin": "Russia",
-          "description": "Beef Stroganoff is a Russian dish made with tender strips of beef, mushrooms, onions, and a rich sour cream sauce. It's traditionally served over egg noodles or rice."
+          "description": "Beef Stroganoff is a Russian dish made with tender strips of beef, mushrooms, onions, and a rich sour cream sauce. It's traditionally served over egg noodles or rice.",
+          "quantity":"10"
      },
      {
           "food_name": "Beef Tacos",
@@ -78,7 +86,8 @@
           "price": "$10.99",
           "made_by": "Taco Delicioso",
           "food_origin": "Mexico",
-          "description": "Beef tacos feature seasoned and grilled beef served in soft or hard taco shells. They can be customized with various toppings, including lettuce, cheese, and salsa."
+          "description": "Beef tacos feature seasoned and grilled beef served in soft or hard taco shells. They can be customized with various toppings, including lettuce, cheese, and salsa.",
+          "quantity":"10"
      },
      {
           "food_name": "Beef Wellington",
@@ -87,7 +96,8 @@
           "price": "$24.99",
           "made_by": "Chef Gordon",
           "food_origin": "United Kingdom",
-          "description": "Beef Wellington is a British dish made with fillet steak coated with pâté and duxelles (mushroom and onion mixture), wrapped in puff pastry, and baked until golden brown."
+          "description": "Beef Wellington is a British dish made with fillet steak coated with pâté and duxelles (mushroom and onion mixture), wrapped in puff pastry, and baked until golden brown.",
+          "quantity":"10"
      },
 
      {
@@ -97,7 +107,8 @@
           "price": "$1.99",
           "made_by": "Beverage Co.",
           "food_origin": "Various",
-          "description": "Cola is a popular carbonated soft drink known for its sweet and slightly tangy flavor. It's often enjoyed as a refreshing beverage on its own or as a mixer in various cocktails."
+          "description": "Cola is a popular carbonated soft drink known for its sweet and slightly tangy flavor. It's often enjoyed as a refreshing beverage on its own or as a mixer in various cocktails.",
+          "quantity":"10"
      },
      {
           "food_name": "strawberry lemonade",
@@ -106,7 +117,8 @@
           "price": "$2.50",
           "made_by": "Fresh Sips",
           "food_origin": "United States",
-          "description": "strawberry Lemonade is a classic citrus-based soft drink made with lemon juice, water, and sugar. It's known for its tart and sweet taste, especially on a hot day."
+          "description": "strawberry Lemonade is a classic citrus-based soft drink made with lemon juice, water, and sugar. It's known for its tart and sweet taste, especially on a hot day.",
+          "quantity":"10"
      },
      {
           "food_name": " lemonade",
@@ -115,7 +127,8 @@
           "price": "$2.50",
           "made_by": "Fresh Sips",
           "food_origin": "United States",
-          "description": "Lemonade is a classic citrus-based soft drink made with lemon juice, water, and sugar. It's known for its tart and sweet taste, especially on a hot day."
+          "description": "Lemonade is a classic citrus-based soft drink made with lemon juice, water, and sugar. It's known for its tart and sweet taste, especially on a hot day.",
+          "quantity":"10"
      },
      {
           "food_name": "Ginger Beer",
@@ -124,7 +137,8 @@
           "price": "$2.99",
           "made_by": "Ginger Brews",
           "food_origin": "Various",
-          "description": "Ginger beer is a non-alcoholic, carbonated beverage with a strong ginger flavor. It's often used as a mixer in cocktails or enjoyed on its own for its spicy and refreshing taste."
+          "description": "Ginger beer is a non-alcoholic, carbonated beverage with a strong ginger flavor. It's often used as a mixer in cocktails or enjoyed on its own for its spicy and refreshing taste.",
+          "quantity":"10"
      },{
           "food_name": "Cold Coffee",
           "food_image": "https://i.ibb.co/f2KF9SY/Cafe-style-cold-coffee-with-icecream.jpg",
@@ -132,6 +146,7 @@
           "price": "$3.99",
           "made_by": "Coffee Haven",
           "food_origin": "Various",
-          "description": "Iced coffee is a chilled coffee beverage made by brewing coffee and then cooling it down. It is often served over ice and can be sweetened and flavored with options like vanilla, caramel, or mocha. Iced coffee is a perfect choice for coffee lovers on hot days."
+          "description": "Iced coffee is a chilled coffee beverage made by brewing coffee and then cooling it down. It is often served over ice and can be sweetened and flavored with options like vanilla, caramel, or mocha. Iced coffee is a perfect choice for coffee lovers on hot days.",
+          "quantity":"10"
         }
 ]
