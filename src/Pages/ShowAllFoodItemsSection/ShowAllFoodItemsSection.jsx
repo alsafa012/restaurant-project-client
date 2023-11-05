@@ -60,7 +60,7 @@ const ShowAllFoodItemsSection = () => {
                               type="text"
                               name="name"
                               placeholder="Search here...."
-                              className="input border-none w-3/5 md:w-[30%] rounded-l-md px-2 py-3 md:px-4 md:py-4"
+                              className="input border-2 w-3/5 md:w-[30%] rounded-l-md px-2 py-3 md:px-4 md:py-4"
                          />
                          <button
                               onClick={handleClickBtn}

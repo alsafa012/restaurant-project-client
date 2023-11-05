@@ -69,7 +69,7 @@ const RegistrationPage = () => {
      };
      return (
           <div>
-               <p className=" text-3xl font-bold mb-6 text-center text-blue-500 mt-5">
+               <p className=" text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
                     Sign Up Page
                </p>
 
@@ -163,7 +163,7 @@ const RegistrationPage = () => {
                          )}
                     </h3>
                     <div className="form-control mt-6">
-                         <button className="btn text-white">Sign Up</button>
+                         <button className="btn bg-[#FF444A] text-white">Sign Up</button>
                     </div>
                </form>
                <p className="text-center py-4">

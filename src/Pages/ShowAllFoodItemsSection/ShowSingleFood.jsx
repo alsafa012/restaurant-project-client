@@ -41,7 +41,7 @@ const ShowSingleFood = () => {
                          </p>
 
                          <Link>
-                              <button className="btn mt-3 text-white bg-gradient-to-r from-blue-700 to-blue-900">
+                              <button className="btn mt-3 text-white bg-[#FF444A]">
                                    Order naw
                               </button>
                          </Link>

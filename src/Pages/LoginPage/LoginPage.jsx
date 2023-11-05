@@ -6,29 +6,68 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const LoginPage = () => {
      const [showPassword, setShowPassword] = useState(false);
-     const { user, userSignIn } = useContext(AuthContext);
+     const { user, googleSignIn, userSignIn } = useContext(AuthContext);
      const [errorMessage, setErrorMessage] = useState(false);
      const location = useLocation();
      console.log(location);
      const navigate = useNavigate();
      console.log(navigate);
+     // const handleGoogleSignIn = () => {
+     //      console.log("google login");
+     //      return Swal.fire(
+     //           "Good job!",
+     //           "You Signed In With Google Successfully",
+     //           "success"
+     //      );
+     // };
      const handleGoogleSignIn = () => {
-          console.log("google login");
-          return Swal.fire(
-               "Good job!",
-               "You Signed In With Google Successfully",
-               "success"
-          );
+          if (user) {
+               return Swal.fire({
+                    title: "Error!",
+                    text: "user already logged in",
+                    icon: "error",
+                    // confirmButtonText: "Cool",
+               });
+          }
+          // sign in using google account
+          googleSignIn()
+               .then((result) => {
+                    navigate(location?.state ? location.state : "/");
+                    return Swal.fire(
+                         "Good job!",
+                         "You Signed In With Google Successfully",
+                         "success"
+                    );
+               })
+               .catch((error) => {
+                    console.log(error);
+               });
+          // Swal.fire({
+          //      title: 'Are you sure?',
+          //      text: "You won't be able to revert this!",
+          //      icon: 'warning',
+          //      showCancelButton: true,
+          //      confirmButtonColor: '#3085d6',
+          //      cancelButtonColor: '#d33',
+          //      confirmButtonText: 'Yes, delete it!'
+          //    }).then((result) => {
+          //      if (result.isConfirmed) {
+          //        Swal.fire(
+          //          'Deleted!',
+          //          'Your file has been deleted.',
+          //          'success'
+          //        )
+          //      }
+          //    })
      };
      const handleLogin = (e) => {
           if (user) {
-              return Swal.fire({
+               return Swal.fire({
                     title: "Error!",
                     text: "user already logged in",
                     icon: "error",
                     confirmButtonText: "Cool",
                });
-             ;
           }
           e.preventDefault();
           const form = e.target;
@@ -36,29 +75,29 @@ const LoginPage = () => {
           const password = form.password.value;
           console.log(email, password);
           userSignIn(email, password)
-          .then((result) => {
-               navigate(location?.state ? location.state : "/");
-               console.log(result.user);
-               Swal.fire(
-                    "Good job!",
-                    "User login successfully",
-                    "success"
-               );
+               .then((result) => {
+                    navigate(location?.state ? location.state : "/");
+                    console.log(result.user);
+                    Swal.fire(
+                         "Good job!",
+                         "User login successfully",
+                         "success"
+                    );
 
-               e.target.email.value = "";
-               e.target.password.value = "";
-          })
-          .catch((error) => {
-               console.log(error);
-               setErrorMessage(
-                    "User login failed..! Invalid email or password"
-               );
-          });
+                    e.target.email.value = "";
+                    e.target.password.value = "";
+               })
+               .catch((error) => {
+                    console.log(error);
+                    setErrorMessage(
+                         "User login failed..! Invalid email or password"
+                    );
+               });
      };
      return (
           <div>
                <div>
-                    <p className="text-3xl font-bold mb-6 text-center text-blue-500 mt-5">
+                    <p className="text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
                          Login Here..
                     </p>
                     <form
@@ -117,7 +156,7 @@ const LoginPage = () => {
                               )}
                          </h3>
                          <div className="form-control mt-6">
-                              <button className="btn text-white bg-gradient-to-r from-blue-900 to-blue-900">
+                              <button className="btn text-white bg-[#FF444A]">
                                    Login
                               </button>
                          </div>
@@ -144,7 +183,7 @@ const LoginPage = () => {
                     <p className="text-center py-4">
                          Do not Have An Account ?
                          <Link
-                              className="text-red-300 font-bold hover:underline ml-1"
+                              className="text-[#FF444A] font-bold hover:underline ml-1"
                               to="/registration"
                          >
                               Sign Up

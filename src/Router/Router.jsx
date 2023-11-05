@@ -8,6 +8,7 @@ import AddProduct from "../Pages/AddProduct/AddProduct";
 import PrivateRoute from "./PrivateRoute";
 import ShowAllFoodItemsSection from "../Pages/ShowAllFoodItemsSection/ShowAllFoodItemsSection";
 import ShowSingleFood from "../Pages/ShowAllFoodItemsSection/ShowSingleFood";
+import BlogSection from "../Components/BlogSection/BlogSection";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -34,18 +35,14 @@ const myCreatedRouter = createBrowserRouter([
                               <ShowAllFoodItemsSection></ShowAllFoodItemsSection>
                          </PrivateRoute>
                     ),
-                    // loader: () => fetch("http://localhost:5000/allfoods"),
+
                     loader: () => fetch("http://localhost:5000/allFoodsCount"),
-                    // loader:()=>fetch('/allFood.json')
-                    // loader:()=>fetch('../../public/allFood.json')
                },
                {
                     path: "/details/:id",
                     element: <ShowSingleFood></ShowSingleFood>,
                     loader: ({ params }) =>
                          fetch(`http://localhost:5000/allfoods/${params.id}`),
-                    // loader:()=>fetch('/allFood.json')
-                    // loader:()=>fetch('../../public/allFood.json')
                },
                {
                     path: "/login",
@@ -54,6 +51,10 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/registration",
                     element: <RegistrationPage></RegistrationPage>,
+               },
+               {
+                    path: "/blog",
+                    element: <BlogSection></BlogSection>,
                },
           ],
      },

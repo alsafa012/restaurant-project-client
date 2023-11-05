@@ -8,14 +8,35 @@ const Navbar = () => {
 
      const navigate = useNavigate();
      const handleSignOut = () => {
-          userSignOut()
-               .then(() => {
-                    Swal.fire(
-                         "Good job!",
-                         "User Sign out successfully",
-                         "success"
-                    );
-                    navigate("/");
+          // userSignOut()
+          //      .then(() => {
+          //           Swal.fire(
+          //                "Good job!",
+          //                "User Sign out successfully",
+          //                "success"
+          //           );
+          //           navigate("/");
+          //      })
+          Swal.fire({
+               title: "Are you sure want to sign out?",
+               // text: "You won't be able to revert this!",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes",
+          })
+               .then((result) => {
+                    if (result.isConfirmed) {
+                         userSignOut().then(() => {
+                              Swal.fire(
+                                   "Good job!",
+                                   "User Sign out successfully",
+                                   "success"
+                              );
+                              navigate("/");
+                         });
+                    }
                })
                .catch();
      };
@@ -63,41 +84,61 @@ const Navbar = () => {
                          addProduct
                     </NavLink>
                </li>
-               <li>
-                    <NavLink
-                         to="/login"
-                         className={({ isActive, isPending }) =>
-                              isPending
-                                   ? "pending"
-                                   : isActive
-                                   ? "text-[#ff6900] underline"
-                                   : ""
-                         }
-                    >
-                         Login
-                    </NavLink>
-               </li>
-               <li>
-                    <NavLink
-                         to="/registration"
-                         className={({ isActive, isPending }) =>
-                              isPending
-                                   ? "pending"
-                                   : isActive
-                                   ? "text-[#ff6900] underline"
-                                   : ""
-                         }
-                    >
-                         Registration
-                    </NavLink>
-               </li>
+               {!user && (
+                    <li>
+                         <NavLink
+                              to="/login"
+                              className={({ isActive, isPending }) =>
+                                   isPending
+                                        ? "pending"
+                                        : isActive
+                                        ? "text-[#ff6900] underline"
+                                        : ""
+                              }
+                         >
+                              Login
+                         </NavLink>
+                    </li>
+               )}
+               {!user && (
+                    <li>
+                         <NavLink
+                              to="/registration"
+                              className={({ isActive, isPending }) =>
+                                   isPending
+                                        ? "pending"
+                                        : isActive
+                                        ? "text-[#ff6900] underline"
+                                        : ""
+                              }
+                         >
+                              Registration
+                         </NavLink>
+                    </li>
+               )}
+               {user && (
+                    <li>
+                         <NavLink
+                              to="/blog"
+                              className={({ isActive, isPending }) =>
+                                   isPending
+                                        ? "pending"
+                                        : isActive
+                                        ? "text-[#ff6900] underline"
+                                        : ""
+                              }
+                         >
+                              Blog
+                         </NavLink>
+                    </li>
+               )}
           </>
      );
      return (
           <div>
                <div>
                     <div className=" navbar bg-black ">
-                    {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
+                         {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                          <div className="navbar-start">
                               <div className="dropdown">
                                    <label
@@ -143,7 +184,6 @@ const Navbar = () => {
                          </div>
 
                          <div className="navbar-end ">
-                          
                               <div className="dropdown dropdown-end">
                                    <label
                                         tabIndex={0}
