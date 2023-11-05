@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 
@@ -8,6 +8,10 @@ const LoginPage = () => {
      const [showPassword, setShowPassword] = useState(false);
      const { user, userSignIn } = useContext(AuthContext);
      const [errorMessage, setErrorMessage] = useState(false);
+     const location = useLocation();
+     console.log(location);
+     const navigate = useNavigate();
+     console.log(navigate);
      const handleGoogleSignIn = () => {
           console.log("google login");
           return Swal.fire(
@@ -33,7 +37,7 @@ const LoginPage = () => {
           console.log(email, password);
           userSignIn(email, password)
           .then((result) => {
-               // navigate(location?.state ? location.state : "/");
+               navigate(location?.state ? location.state : "/");
                console.log(result.user);
                Swal.fire(
                     "Good job!",

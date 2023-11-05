@@ -4,13 +4,16 @@ import MainLayout from "../MainLayout/MainLayout";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AddProduct from "../Pages/AddProduct/AddProduct";
+import PrivateRoute from "./PrivateRoute";
+import ShowAllFoodItemsSection from "../Pages/ShowAllFoodItemsSection/ShowAllFoodItemsSection";
 
 
 const myCreatedRouter = createBrowserRouter([
      {
           path: "/",
           element: <MainLayout></MainLayout>,
-          errorElement:<ErrorPage></ErrorPage>,
+          errorElement: <ErrorPage></ErrorPage>,
           children: [
                {
                     path: "/",
@@ -18,7 +21,17 @@ const myCreatedRouter = createBrowserRouter([
                },
                {
                     path: "/addProduct",
-                    element: <Home></Home>,
+                    element: (
+                         <PrivateRoute>
+                              <AddProduct></AddProduct>
+                         </PrivateRoute>
+                    ),
+               },
+               {
+                    path: "/allFoodItems",
+                    element: <ShowAllFoodItemsSection></ShowAllFoodItemsSection>,
+                    loader:()=>fetch('/allFood.json')
+                    // loader:()=>fetch('../../public/allFood.json')
                },
                {
                     path: "/login",
@@ -28,7 +41,7 @@ const myCreatedRouter = createBrowserRouter([
                     path: "/registration",
                     element: <RegistrationPage></RegistrationPage>,
                },
-          ]
+          ],
      },
 ]);
 

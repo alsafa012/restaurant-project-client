@@ -1,14 +1,17 @@
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-
-import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const RegistrationPage = () => {
      const [showPassword, setShowPassword] = useState(false);
      const [errorMessage, setErrorMessage] = useState(false);
      const { user, createUser, updateUserProfile } = useContext(AuthContext);
+     const location = useLocation();
+     console.log(location);
+     const navigate = useNavigate();
+     console.log(navigate);
 
      const handleRegister = (e) => {
           e.preventDefault();
@@ -56,6 +59,7 @@ const RegistrationPage = () => {
                          "User created successfully",
                          "success"
                     );
+                    navigate(location?.state ? location.state : "/");
                })
                .catch((error) => {
                     console.log(error.message);
