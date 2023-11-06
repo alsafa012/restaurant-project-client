@@ -6,19 +6,6 @@ import Swal from "sweetalert2";
 
 const AddProduct = () => {
      const { user } = useContext(AuthContext);
-     // const singleFoodInfo = useLoaderData();
-     // console.log(service);
-     // const {
-     //      _id,
-     //      food_name,
-     //      food_image,
-     //      food_category,
-     //      price,
-     //      added_by,
-     //      food_origin,
-     //      description,
-     // } = singleFoodInfo;
-
      const handleAddProduct = (e) => {
           e.preventDefault();
           const form = e.target;

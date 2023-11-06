@@ -37,7 +37,6 @@ const myCreatedRouter = createBrowserRouter([
                               <ShowAllFoodItemsSection></ShowAllFoodItemsSection>
                          </PrivateRoute>
                     ),
-
                     loader: () => fetch("http://localhost:5000/allFoodsCount"),
                },
                {
@@ -53,20 +52,24 @@ const myCreatedRouter = createBrowserRouter([
                          fetch(`http://localhost:5000/allfoods/${params.id}`),
                },
                {
+                    path: "/blog",
+                    element: <BlogSection></BlogSection>,
+               },
+               {
+                    path: "/order",
+                    element: (
+                         <PrivateRoute>
+                              <OrderPage></OrderPage>
+                         </PrivateRoute>
+                    ),
+               },
+               {
                     path: "/login",
                     element: <LoginPage></LoginPage>,
                },
                {
                     path: "/registration",
                     element: <RegistrationPage></RegistrationPage>,
-               },
-               {
-                    path: "/blog",
-                    element: <BlogSection></BlogSection>,
-               },
-               {
-                    path: "/order",
-                    element: <OrderPage></OrderPage>,
                },
           ],
      },
