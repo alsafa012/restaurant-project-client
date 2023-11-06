@@ -14,7 +14,7 @@ const OrderPage = () => {
      useEffect(() => {
           if (user) {
                axios.get(
-                    `https://restaurant-project-server.vercel.app/purchasedFoods?email=${user.email}`,
+                    `http://localhost:5000/purchasedFoods?email=${user.email}`,
                     {
                          withCredentials: true,
                     }

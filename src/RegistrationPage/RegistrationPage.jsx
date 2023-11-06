@@ -62,7 +62,7 @@ const RegistrationPage = () => {
                          name,
                          photo,
                     };
-                    fetch("https://restaurant-project-server.vercel.app/users", {
+                    fetch("http://localhost:5000/users", {
                          method: "POST",
                          headers: {
                               "Content-Type": "application/json",
