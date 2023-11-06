@@ -1,7 +1,5 @@
-import moment from "moment/moment";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddProduct = () => {
@@ -14,9 +12,9 @@ const AddProduct = () => {
           const foodName = form.foodName.value;
           const foodImage = form.foodImage.value;
           const foodCategory = form.foodCategory.value;
-          const price = form.price.value;
+          const price = form.price.value || '0';
           const foodOrigin = form.foodOrigin.value;
-          const quantity = form.quantity.value;
+          const quantity = form.quantity.value || '0';
           const description = form.description.value;
           const allData = {
                email,

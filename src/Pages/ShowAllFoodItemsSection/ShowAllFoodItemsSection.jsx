@@ -72,7 +72,7 @@ const ShowAllFoodItemsSection = () => {
                </div>
 
                <div className="mt-10">
-                    {searchFood.map((food) => (
+                    {searchFood?.map((food) => (
                          <ShowAllFoods
                               key={food._id}
                               food={food}

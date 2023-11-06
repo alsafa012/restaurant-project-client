@@ -12,6 +12,7 @@ import BlogSection from "../Components/BlogSection/BlogSection";
 import OrderPage from "../Pages/OrderPage/OrderPage";
 import PurchasedFood from "../Pages/PurchasedPage/PurchasedFood";
 import MyAddedPage from "../Pages/MyAddedPage/MyAddedPage";
+import UpdateFoodsInfo from "../Pages/UpdateFoodsInfoPage/UpdateFoodsInfo";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -27,6 +28,7 @@ const myCreatedRouter = createBrowserRouter([
                     path: "/addProduct",
                     element: (
                          <PrivateRoute>
+                              <AddProduct></AddProduct>
                          </PrivateRoute>
                     ),
                },
@@ -48,6 +50,12 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/purchasedFood/:id",
                     element: <PurchasedFood></PurchasedFood>,
+                    loader: ({ params }) =>
+                         fetch(`http://localhost:5000/allfoods/${params.id}`),
+               },
+               {
+                    path: "/update/:id",
+                    element: <UpdateFoodsInfo></UpdateFoodsInfo>,
                     loader: ({ params }) =>
                          fetch(`http://localhost:5000/allfoods/${params.id}`),
                },
@@ -74,7 +82,7 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/myAddedFood",
                     element: <MyAddedPage></MyAddedPage>,
-                    loader:()=> fetch("http://localhost:5000/allfoods"),
+                    loader: () => fetch("http://localhost:5000/allfoods"),
                },
           ],
      },

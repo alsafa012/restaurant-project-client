@@ -1,84 +1,103 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
-import moment from "moment";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const PurchasedFood = () => {
+const UpdateFoodsInfo = () => {
+
+     const location = useLocation()
+     console.log(location);
+     const navigate = useNavigate();
+     const from = location.state || '/'
+     console.log(from);
+
+
+
+     const foodsData = useLoaderData();
+     const {
+          _id,
+          food_name,
+          food_image,
+          food_category,
+          price,
+          added_by,
+          email,
+          food_origin,
+          description,
+          quantity,
+     } = foodsData;
+     // console.log(Object.keys(foodsData).join(", "));
      const { user } = useContext(AuthContext);
-     const foodItems = useLoaderData();
-     console.log(foodItems);
-     const handlePurchase = (e) => {
+
+     const handleAddProduct = (e) => {
           e.preventDefault();
           const form = e.target;
-          const food_name = foodItems.food_name;
-          const food_image = foodItems.food_image;
-          const quantity = form.quantity.value;
-          const addedBy = form.name.value;
-          const price = foodItems.price;
+          const addedBy = user?.displayName;
           const email = user?.email;
-          const date = form.date.value;
-
+          const foodName = form.foodName.value;
+          const foodImage = form.foodImage.value;
+          const foodCategory = form.foodCategory.value;
+          const price = form.price.value;
+          const foodOrigin = form.foodOrigin.value;
+          const quantity = form.quantity.value;
+          const description = form.description.value;
           const allData = {
                email,
-               date,
-               food_name,
-               food_image,
+               food_name: foodName,
+               food_image: foodImage,
+               food_category: foodCategory,
                price: price,
                added_by: addedBy,
+               food_origin: foodOrigin,
+               description: description,
                quantity: quantity,
           };
           console.log(allData);
-          if(foodItems.email === email) {
-               return alert('same user');
-          }
-          else{
-               if (foodItems?.quantity === 0) {
-                    Swal.fire({
-                         icon: "error",
-                         title: "Oops...",
-                         text: "Something went wrong!",
-                    });
-               } else {
-                    if (foodItems?.quantity < quantity) {
-                         Swal.fire({
-                              icon: "error",
-                              title: "Oops...",
-                              text: "not enough!",
-                         });
-                    } 
-                    else {
-                         fetch("http://localhost:5000/purchasedFoods", {
-                              method: "POST",
-                              headers: {
-                                   "content-type": "application/json",
-                              },
-                              body: JSON.stringify(allData),
-                         })
-                              .then((res) => res.json())
-                              .then((data) => {
-                                   if (data.acknowledged) {
-                                        Swal.fire(
-                                             "Good job!",
-                                             "Product added successfully",
-                                             "success"
-                                        );
-                                   }
-                                   console.log(data);
-                              });
-                    }
-               }
 
-          }
+          Swal.fire({
+               title: "Are you sure?",
+               text: "Update this Product!",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes, Update it!",
+          }).then((result) => {
+               if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/allfoods/${_id}`, {
+                         method: "PUT",
+                         headers: {
+                              "content-type": "application/json",
+                         },
+                         body: JSON.stringify(allData),
+                    })
+                         .then((res) => res.json())
+                         .then((data) => {
+                              console.log(data);
+                              if (data.modifiedCount > 0) {
+                                   Swal.fire({
+                                        icon: "success",
+                                        text: "Inserted successfully!",
+                                   });
+                              }
+                              navigate(from, {replace:true});
+                              // navigate(from, {replace:true});
+                              // navigate('/');
+                         });
+                    // navigate(location.state && location.state);
+               }
+          });
+
+          // form.reset();
      };
 
      return (
           <div>
-               <h2 className="text-center text-3xl font-bold mt-5 ">
-                    Purchased Here
+               <h2 className="text-center text-3xl font-bold mt-5 text-[#FF444A]">
+                    Add Items Here
                </h2>
                <div className=" bg-[#F3F3F3] container mx-auto my-10 border">
-                    <form onSubmit={handlePurchase}>
+                    <form onSubmit={handleAddProduct}>
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
                               {/* 1st added by*/}
                               <div className="form-control">
@@ -120,8 +139,8 @@ const PurchasedFood = () => {
                                         </span>
                                    </label>
                                    <input
-                                        defaultValue={foodItems?.food_name}
                                         placeholder="Food Name"
+                                        defaultValue={food_name}
                                         name="foodName"
                                         className="input input-bordered "
                                    />
@@ -134,27 +153,29 @@ const PurchasedFood = () => {
                                         </span>
                                    </label>
                                    <input
-                                        defaultValue={foodItems?.food_image}
+                                        defaultValue={food_image}
+                                        placeholder="Food Image URL"
                                         name="foodImage"
                                         type="text"
                                         className="input input-bordered "
                                    />
                               </div>
                               {/* 4th Food Category*/}
-                              {/* <div className="form-control">
+                              <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">
                                              Food Category
                                         </span>
                                    </label>
                                    <input
+                                        defaultValue={food_category}
                                         type="text"
                                         name="foodCategory"
                                         placeholder="Food Category"
                                         className="input input-bordered "
                                         required
                                    />
-                              </div> */}
+                              </div>
                               {/* 5th quantity  */}
                               <div className="form-control">
                                    <label className="label">
@@ -163,6 +184,7 @@ const PurchasedFood = () => {
                                         </span>
                                    </label>
                                    <input
+                                        defaultValue={quantity}
                                         type="text"
                                         name="quantity"
                                         placeholder="Quantity"
@@ -170,36 +192,38 @@ const PurchasedFood = () => {
                                         required
                                    />
                               </div>
-                              {/* 6th date*/}
+                              {/* 6th Price*/}
                               <div className="form-control">
                                    <label className="label">
-                                        <span className="label-text dark:text-white">
-                                             Date
+                                        <span className="label-text">
+                                             Price
                                         </span>
                                    </label>
                                    <input
-                                        value={moment().format(
-                                             "dddd, MMMM YYYY"
-                                        )}
-                                        name="date"
-                                        className="input input-bordered dark:text-black"
+                                        defaultValue={price}
+                                        type="text"
+                                        placeholder="Price"
+                                        name="price"
+                                        className="input input-bordered "
+                                        required
                                    />
                               </div>
                               {/* 7th Food Origin (Country) */}
-                              {/* <div className="form-control">
+                              <div className="form-control">
                                    <label className="label">
                                         <span className="label-text ">
                                              Food Origin (Country)
                                         </span>
                                    </label>
                                    <input
+                                        defaultValue={food_origin}
                                         placeholder="Food Origin (Country)"
                                         name="foodOrigin"
                                         className="input input-bordered "
                                    />
-                              </div> */}
+                              </div>
                               {/* 8th  description */}
-                              {/* <div className="form-control col-span-1 md:col-span-2">
+                              <div className="form-control col-span-1 md:col-span-2">
                                    <label className="label">
                                         <span className="label-text ">
                                              description
@@ -207,25 +231,11 @@ const PurchasedFood = () => {
                                    </label>
                                    <input
                                         type="text"
+                                        defaultValue={description}
                                         name="description"
                                         placeholder="Description"
                                         className="input input-bordered"
                                         required
-                                   />
-                              </div> */}
-                              {/* price */}
-                              <div className="form-control col-span-1 md:col-span-2">
-                                   <label className="label">
-                                        <span className="label-text">
-                                             Price
-                                        </span>
-                                   </label>
-                                   <input
-                                        type="text"
-                                        // placeholder="Price"
-                                        defaultValue={foodItems?.price}
-                                        name="price"
-                                        className="input input-bordered"
                                    />
                               </div>
                          </div>
@@ -233,7 +243,7 @@ const PurchasedFood = () => {
                               <input
                                    type="submit"
                                    className="btn bg-[#FF3811] border-none text-white"
-                                   value="Purchased Food"
+                                   value="Update here"
                               />
                          </div>
                     </form>
@@ -242,4 +252,4 @@ const PurchasedFood = () => {
      );
 };
 
-export default PurchasedFood;
+export default UpdateFoodsInfo;

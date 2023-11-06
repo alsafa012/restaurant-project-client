@@ -11,8 +11,8 @@ const ShowAllFoods = ({ food }) => {
           price,
           food_origin,
           quantity,
-          added_by
-          
+          added_by,
+          email,
      } = food;
      return (
           <div className="my-5">
@@ -27,12 +27,13 @@ const ShowAllFoods = ({ food }) => {
 
                     <div className="md:w-[70%]">
                          <div className="text-xl font-medium space-y-2 py-2">
-                              <p>food_name: {food_name}</p>
-                              <p>food_category: {food_category}</p>
+                              <p>Food-Name: {food_name}</p>
+                              <p>Food-Category: {food_category}</p>
                               <p>Price: ${price}</p>
                               <p>Quantity: {quantity}</p>
-                              <p>food_origin: {food_origin}</p>
-                              <p>added_by: {added_by}</p>
+                              <p>Food-Origin: {food_origin}</p>
+                              <p>Added-By: {added_by}</p>
+                              <p>Email: {email}</p>
                               <Link to={`/details/${_id}`}>
                                    <button className="btn mt-3 text-white bg-[#FF444A]">
                                         See Details

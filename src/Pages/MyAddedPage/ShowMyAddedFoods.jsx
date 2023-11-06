@@ -1,7 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ShowMyAddedFoods = ({ data }) => {
+     const location = useLocation()
+     // console.log(location);
+     // const navigate = useNavigate();
+     // const from = location.state || '/'
+     // console.log(from);
      const {
           _id,
           email,
@@ -33,7 +37,7 @@ const ShowMyAddedFoods = ({ data }) => {
                               <p>Food-Origin: {food_origin}</p>
                               <p>Added-by: {added_by}</p>
                               <p>Email: {email}</p>
-                              <Link to={`/update/${_id}`}>
+                              <Link state={location.pathname} to={`/update/${_id}`}>
                                    <button className="btn mt-3 text-white bg-[#FF444A]">
                                         Update Details
                                    </button>
