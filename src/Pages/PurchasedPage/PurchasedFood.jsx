@@ -29,25 +29,28 @@ const PurchasedFood = () => {
                quantity: quantity,
           };
           console.log(allData);
-          if(foodItems.email === email) {
-               return alert('same user');
-          }
-          else{
+          if (foodItems.email === email) {
+               // return alert('same user');
+               return Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "User cannot purchased his own added products",
+               });
+          } else {
                if (foodItems?.quantity === 0) {
                     Swal.fire({
                          icon: "error",
                          title: "Oops...",
-                         text: "Something went wrong!",
+                         text: "item is not available", 
                     });
                } else {
                     if (foodItems?.quantity < quantity) {
                          Swal.fire({
                               icon: "error",
                               title: "Oops...",
-                              text: "not enough!",
+                              text: "Product quantity does not exist",
                          });
-                    } 
-                    else {
+                    } else {
                          fetch("http://localhost:5000/purchasedFoods", {
                               method: "POST",
                               headers: {
@@ -68,7 +71,6 @@ const PurchasedFood = () => {
                               });
                     }
                }
-
           }
      };
 

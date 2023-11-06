@@ -43,13 +43,21 @@ const myCreatedRouter = createBrowserRouter([
                },
                {
                     path: "/details/:id",
-                    element: <ShowSingleFood></ShowSingleFood>,
+                    element: (
+                         <PrivateRoute>
+                              <ShowSingleFood></ShowSingleFood>
+                         </PrivateRoute>
+                    ),
                     loader: ({ params }) =>
                          fetch(`http://localhost:5000/allfoods/${params.id}`),
                },
                {
                     path: "/purchasedFood/:id",
-                    element: <PurchasedFood></PurchasedFood>,
+                    element: (
+                         <PrivateRoute>
+                              <PurchasedFood></PurchasedFood>
+                         </PrivateRoute>
+                    ),
                     loader: ({ params }) =>
                          fetch(`http://localhost:5000/allfoods/${params.id}`),
                },
@@ -71,20 +79,32 @@ const myCreatedRouter = createBrowserRouter([
                          </PrivateRoute>
                     ),
                },
-               {
-                    path: "/login",
-                    element: <LoginPage></LoginPage>,
-               },
-               {
-                    path: "/registration",
-                    element: <RegistrationPage></RegistrationPage>,
-               },
+               // {
+               //      path: "/login",
+               //      element: <LoginPage></LoginPage>,
+               // },
+               // {
+               //      path: "/registration",
+               //      element: <RegistrationPage></RegistrationPage>,
+               // },
                {
                     path: "/myAddedFood",
-                    element: <MyAddedPage></MyAddedPage>,
+                    element: (
+                         <PrivateRoute>
+                              <MyAddedPage></MyAddedPage>
+                         </PrivateRoute>
+                    ),
                     loader: () => fetch("http://localhost:5000/allfoods"),
                },
           ],
+     },
+     {
+          path: "/login",
+          element: <LoginPage></LoginPage>,
+     },
+     {
+          path: "/registration",
+          element: <RegistrationPage></RegistrationPage>,
      },
 ]);
 

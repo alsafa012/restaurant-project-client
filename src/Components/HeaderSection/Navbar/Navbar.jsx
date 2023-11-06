@@ -67,10 +67,10 @@ const Navbar = () => {
                                    : ""
                          }
                     >
-                         allFoodItems
+                         All Food Items
                     </NavLink>
                </li>
-               <li>
+               {/* <li>
                     <NavLink
                          to="/addProduct"
                          className={({ isActive, isPending }) =>
@@ -83,7 +83,7 @@ const Navbar = () => {
                     >
                          addProduct
                     </NavLink>
-               </li>
+               </li> */}
                {!user && (
                     <li>
                          <NavLink
@@ -128,11 +128,11 @@ const Navbar = () => {
                                         : ""
                               }
                          >
-                              Blog
+                              Blogs
                          </NavLink>
                     </li>
                )}
-               {user && (
+               {/* {user && (
                     <li>
                          <NavLink
                               to="/order"
@@ -147,7 +147,7 @@ const Navbar = () => {
                               order
                          </NavLink>
                     </li>
-               )}
+               )} */}
           </>
      );
      return (
@@ -233,25 +233,7 @@ const Navbar = () => {
                                                                  }
                                                             </a>
                                                        </li>
-                                                       <li>
-                                                            {user ? (
-                                                                 <button
-                                                                      className="font-medium"
-                                                                      onClick={
-                                                                           handleSignOut
-                                                                      }
-                                                                 >
-                                                                      Sign Out
-                                                                 </button>
-                                                            ) : (
-                                                                 <Link to="/login">
-                                                                      <button className="">
-                                                                           Sign
-                                                                           Up
-                                                                      </button>
-                                                                 </Link>
-                                                            )}
-                                                       </li>
+                                                       
                                                        <li>
                                                             <Link
                                                                  to="/myAddedFood"
@@ -277,6 +259,25 @@ const Navbar = () => {
                                                                  My ordered food
                                                                  items
                                                             </Link>
+                                                       </li>
+                                                       <li>
+                                                            {user ? (
+                                                                 <button
+                                                                      className="font-medium"
+                                                                      onClick={
+                                                                           handleSignOut
+                                                                      }
+                                                                 >
+                                                                      Sign Out
+                                                                 </button>
+                                                            ) : (
+                                                                 <Link to="/login">
+                                                                      <button className="">
+                                                                           Sign
+                                                                           Up
+                                                                      </button>
+                                                                 </Link>
+                                                            )}
                                                        </li>
                                                   </div>
                                              </ul>

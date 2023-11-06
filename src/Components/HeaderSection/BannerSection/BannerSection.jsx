@@ -20,6 +20,10 @@ const BannerSection = () => {
                                              <h3 className=" text-3xl md:text-4xl lg:text-5xl mb-5 font-bold">
                                                   Welcome to RJ's Kitchen
                                              </h3>
+                                             <p className="text-xl text-white text-center">
+                                                  Experience the Finest Culinary
+                                                  Delights in Town
+                                             </p>
 
                                              <div className="flex gap-2 justify-center">
                                                   <button className="btn bg-[#FF444A] text-white border-none">
@@ -56,6 +60,10 @@ const BannerSection = () => {
                                              <h3 className=" text-3xl md:text-4xl lg:text-5xl mb-5 font-bold">
                                                   Welcome to RJ's Kitchen
                                              </h3>
+                                             <p className="text-xl text-white text-center">
+                                                  Experience the Finest Culinary
+                                                  Delights in Town
+                                             </p>
 
                                              <div className="flex gap-2 justify-center">
                                                   <button className="btn bg-[#FF444A] text-white border-none">
@@ -92,6 +100,10 @@ const BannerSection = () => {
                                              <h3 className=" text-3xl md:text-4xl lg:text-5xl mb-5 font-bold">
                                                   Welcome to RJ's Kitchen
                                              </h3>
+                                             <p className="text-xl text-white text-center">
+                                                  Experience the Finest Culinary
+                                                  Delights in Town
+                                             </p>
 
                                              <div className="flex gap-2 justify-center">
                                                   <button className="btn bg-[#FF444A] text-white border-none">
@@ -128,6 +140,10 @@ const BannerSection = () => {
                                              <h3 className=" text-3xl md:text-4xl lg:text-5xl mb-5 font-bold">
                                                   Welcome to RJ's Kitchen
                                              </h3>
+                                             <p className="text-xl text-white text-center">
+                                                  Experience the Finest Culinary
+                                                  Delights in Town
+                                             </p>
 
                                              <div className="flex gap-2 justify-center">
                                                   <button className="btn bg-[#FF444A] text-white border-none">
