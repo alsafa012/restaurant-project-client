@@ -252,6 +252,32 @@ const Navbar = () => {
                                                                  </Link>
                                                             )}
                                                        </li>
+                                                       <li>
+                                                            <Link
+                                                                 to="/myAddedFood"
+                                                                 className="font-medium"
+                                                            >
+                                                                 My added food
+                                                                 items
+                                                            </Link>
+                                                       </li>
+                                                       <li>
+                                                            <Link
+                                                                 to="/addProduct"
+                                                                 className="font-medium"
+                                                            >
+                                                                 Add a food item
+                                                            </Link>
+                                                       </li>
+                                                       <li>
+                                                            <Link
+                                                                 to="/order"
+                                                                 className="font-medium"
+                                                            >
+                                                                 My ordered food
+                                                                 items
+                                                            </Link>
+                                                       </li>
                                                   </div>
                                              </ul>
                                         </div>

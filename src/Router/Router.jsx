@@ -11,6 +11,7 @@ import ShowSingleFood from "../Pages/ShowAllFoodItemsSection/ShowSingleFood";
 import BlogSection from "../Components/BlogSection/BlogSection";
 import OrderPage from "../Pages/OrderPage/OrderPage";
 import PurchasedFood from "../Pages/PurchasedPage/PurchasedFood";
+import MyAddedPage from "../Pages/MyAddedPage/MyAddedPage";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -26,7 +27,6 @@ const myCreatedRouter = createBrowserRouter([
                     path: "/addProduct",
                     element: (
                          <PrivateRoute>
-                              <AddProduct></AddProduct>
                          </PrivateRoute>
                     ),
                },
@@ -70,6 +70,11 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/registration",
                     element: <RegistrationPage></RegistrationPage>,
+               },
+               {
+                    path: "/myAddedFood",
+                    element: <MyAddedPage></MyAddedPage>,
+                    loader:()=> fetch("http://localhost:5000/allfoods"),
                },
           ],
      },

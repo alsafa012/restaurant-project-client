@@ -1,19 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ShowAllFoods = ({ food }) => {
-     console.log(Object.keys(food).join(", "));
+const ShowMyAddedFoods = ({ data }) => {
      const {
           _id,
+          email,
           food_name,
           food_image,
-          food_category,
           price,
-          food_origin,
           quantity,
-          added_by
-          
-     } = food;
+          added_by,
+          date,
+          food_origin,
+     } = data;
      return (
           <div className="my-5">
                <div className="md:flex items-center gap-2 bg-base-100 shadow-xl border-2  rounded-xl">
@@ -27,15 +26,16 @@ const ShowAllFoods = ({ food }) => {
 
                     <div className="md:w-[70%]">
                          <div className="text-xl font-medium space-y-2 py-2">
-                              <p>food_name: {food_name}</p>
-                              <p>food_category: {food_category}</p>
+                              <p>Food_name: {food_name}</p>
+                              <p>Food_category: {added_by}</p>
                               <p>Price: ${price}</p>
                               <p>Quantity: {quantity}</p>
-                              <p>food_origin: {food_origin}</p>
-                              <p>added_by: {added_by}</p>
-                              <Link to={`/details/${_id}`}>
+                              <p>Food-Origin: {food_origin}</p>
+                              <p>Added-by: {added_by}</p>
+                              <p>Email: {email}</p>
+                              <Link to={`/update/${_id}`}>
                                    <button className="btn mt-3 text-white bg-[#FF444A]">
-                                        See Details
+                                        Update Details
                                    </button>
                               </Link>
                          </div>
@@ -45,4 +45,4 @@ const ShowAllFoods = ({ food }) => {
      );
 };
 
-export default ShowAllFoods;
+export default ShowMyAddedFoods;
