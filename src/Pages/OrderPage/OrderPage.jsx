@@ -24,26 +24,26 @@ const OrderPage = () => {
           }
      }, [user]);
      return (
-          <div className="min-h-screen border-red-500 border ">
+          <div className="min-h-screen container mx-auto">
                {myOrders.length === 0 ? (
                     <div className="text-center mx-auto text-xl md:text-3xl font-bold mt-20 space-y-2">
                          <h1>Oops...!</h1>
                          <h3>No Product Added Yet.</h3>
                          <Link to={"/"}>
-                              <button className="btn mt-2 bg-gradient-to-r from-blue-700 to-blue-400 text-white border-none">
+                              <button className="btn mt-2 bg-[#FF444A] text-white border-none">
                                    Click Here for Home Page..
                               </button>
                          </Link>
                     </div>
                ) : (
-                    <div className="dark:text-white">
-                         <h2 className="text-5xl text-center">
-                              Bookings: {myOrders.length}
+                    <div className="">
+                         <h2 className="text-3xl text-[#FF444A] font-bold underline lg:text-5xl text-center">
+                              Total Order: {myOrders.length}
                          </h2>
                          <div className="overflow-x-auto">
                               <table className="table">
                                    {/* head */}
-                                   <thead className="dark:text-white font-bold">
+                                   <thead className="font-bold">
                                         <tr>
                                              <th>
                                                   <label>

@@ -15,7 +15,7 @@ const PurchasedFood = () => {
           const food_image = foodItems.food_image;
           const quantity = form.quantity.value;
           const addedBy = form.name.value;
-          const price = form.price.value;
+          const price = foodItems.price;
           const email = user?.email;
           const date = form.date.value;
 

@@ -53,7 +53,7 @@ const AddProduct = () => {
      };
      return (
           <div>
-               <h2 className="text-center text-3xl font-bold mt-5 ">
+               <h2 className="text-center text-3xl font-bold mt-5 text-[#FF444A]">
                     Add Items Here
                </h2>
                <div className=" bg-[#F3F3F3] container mx-auto my-10 border">

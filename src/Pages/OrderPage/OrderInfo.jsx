@@ -14,14 +14,48 @@ const OrderInfo = ({ order, myOrders, setMyOrders }) => {
           date,
      } = order;
 
-    
+     const handleRemove = (id) => {
+          Swal.fire({
+               title: "Are you sure?",
+               text: "You won't be able to revert this!",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+               if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/purchasedFoods/${id}`,{
+                         method: "DELETE",
+                    })
+                         .then((res) => res.json())
+                         .then((data) => {
+                              console.log(data);
+                              if (data.deletedCount > 0) {
+                                   const remaining = myOrders.filter(
+                                        (item) => item._id !== id
+                                   );
+                                   setMyOrders(remaining);
+
+                                   Swal.fire(
+                                        "Deleted!",
+                                        "Your file has been deleted.",
+                                        "success"
+                                   );
+                              }
+                         });
+               }
+          });
+     };
+
 
      return (
           <tr className="dark:text-white font-bold">
                <th>
                     <Link>
                          <button
-                              className="btn"
+                           onClick={() => handleRemove(_id)}
+                              className="btn bg-[#FF444A] text-white border-none"
                          >
                               x
                          </button>
