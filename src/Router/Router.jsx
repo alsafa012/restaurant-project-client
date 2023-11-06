@@ -39,25 +39,25 @@ const myCreatedRouter = createBrowserRouter([
                               <ShowAllFoodItemsSection></ShowAllFoodItemsSection>
                          </PrivateRoute>
                     ),
-                    loader: () => fetch("http://localhost:5000/allFoodsCount"),
+                    loader: () => fetch("https://restaurant-project-server.vercel.app/allFoodsCount"),
                },
                {
                     path: "/details/:id",
                     element: <ShowSingleFood></ShowSingleFood>,
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allfoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allfoods/${params.id}`),
                },
                {
                     path: "/purchasedFood/:id",
                     element: <PurchasedFood></PurchasedFood>,
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allfoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allfoods/${params.id}`),
                },
                {
                     path: "/update/:id",
                     element: <UpdateFoodsInfo></UpdateFoodsInfo>,
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allfoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allfoods/${params.id}`),
                },
                {
                     path: "/blog",
@@ -82,7 +82,7 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/myAddedFood",
                     element: <MyAddedPage></MyAddedPage>,
-                    loader: () => fetch("http://localhost:5000/allfoods"),
+                    loader: () => fetch("https://restaurant-project-server.vercel.app/allfoods"),
                },
           ],
      },

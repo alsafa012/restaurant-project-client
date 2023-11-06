@@ -48,7 +48,7 @@ const PurchasedFood = () => {
                          });
                     } 
                     else {
-                         fetch("http://localhost:5000/purchasedFoods", {
+                         fetch("https://restaurant-project-server.vercel.app/purchasedFoods", {
                               method: "POST",
                               headers: {
                                    "content-type": "application/json",

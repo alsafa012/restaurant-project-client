@@ -28,7 +28,7 @@ const AddProduct = () => {
                quantity: quantity,
           };
           console.log(allData);
-          fetch("http://localhost:5000/allfoods", {
+          fetch("https://restaurant-project-server.vercel.app/allfoods", {
                method: "POST",
                headers: {
                     "content-type": "application/json",

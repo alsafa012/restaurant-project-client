@@ -54,6 +54,25 @@ const RegistrationPage = () => {
                          .catch((error) => {
                               console.log(error);
                          });
+
+                    const createdTime = result.user?.metadata?.creationTime;
+                    const user = {
+                         email,
+                         creationTime: createdTime,
+                         name,
+                         photo,
+                    };
+                    fetch("https://restaurant-project-server.vercel.app/users", {
+                         method: "POST",
+                         headers: {
+                              "Content-Type": "application/json",
+                         },
+                         body: JSON.stringify(user),
+                    })
+                         .then((res) => res.json())
+                         .then((data) => {
+                              console.log(data);
+                         });
                     Swal.fire(
                          "Good job!",
                          "User created successfully",
@@ -163,7 +182,9 @@ const RegistrationPage = () => {
                          )}
                     </h3>
                     <div className="form-control mt-6">
-                         <button className="btn bg-[#FF444A] text-white">Sign Up</button>
+                         <button className="btn bg-[#FF444A] text-white">
+                              Sign Up
+                         </button>
                     </div>
                </form>
                <p className="text-center py-4">
