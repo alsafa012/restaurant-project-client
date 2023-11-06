@@ -132,6 +132,22 @@ const Navbar = () => {
                          </NavLink>
                     </li>
                )}
+               {user && (
+                    <li>
+                         <NavLink
+                              to="/order"
+                              className={({ isActive, isPending }) =>
+                                   isPending
+                                        ? "pending"
+                                        : isActive
+                                        ? "text-[#ff6900] underline"
+                                        : ""
+                              }
+                         >
+                              order
+                         </NavLink>
+                    </li>
+               )}
           </>
      );
      return (
