@@ -1,76 +1,78 @@
-import moment from "moment/moment";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
+import moment from "moment";
 import Swal from "sweetalert2";
 
-const AddProduct = () => {
+const PurchasedFood = () => {
      const { user } = useContext(AuthContext);
-     // const singleFoodInfo = useLoaderData();
-     // console.log(service);
-     // const {
-     //      _id,
-     //      food_name,
-     //      food_image,
-     //      food_category,
-     //      price,
-     //      added_by,
-     //      food_origin,
-     //      description,
-     // } = singleFoodInfo;
-
-     const handleAddProduct = (e) => {
+     const foodItems = useLoaderData();
+     console.log(foodItems);
+     const handlePurchase = (e) => {
           e.preventDefault();
           const form = e.target;
-          const addedBy = form.name.value;
-          const email = user?.email;
-          const foodName = form.foodName.value;
-          const foodImage = form.foodImage.value;
-          const foodCategory = form.foodCategory.value;
-          const price = form.price.value;
-          const foodOrigin = form.foodOrigin.value;
+          const food_name = foodItems.food_name;
+          const food_image = foodItems.food_image;
           const quantity = form.quantity.value;
-          const description = form.description.value;
+          const addedBy = form.name.value;
+          const price = form.price.value;
+          const email = user?.email;
+          const date = form.date.value;
+
           const allData = {
                email,
-               food_name: foodName,
-               food_image:foodImage,
-               food_category: foodCategory,
+               date,
+               food_name,
+               food_image,
                price: price,
                added_by: addedBy,
-               food_origin: foodOrigin,
-               description: description,
                quantity: quantity,
           };
           console.log(allData);
-          fetch("http://localhost:5000/allfoods", {
-               method: "POST",
-               headers: {
-                    "content-type": "application/json",
-               },
-               body: JSON.stringify(allData),
-          })
-               .then((res) => res.json())
-               .then((data) => {
-                    if (data.acknowledged) {
-                         Swal.fire(
-                              "Good job!",
-                              "Product added successfully",
-                              "success"
-                         );
-                    }
-                    console.log(data);
+          if (foodItems?.quantity === 0) {
+               Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
                });
-
-          // form.reset();
+          } else {
+               if (foodItems?.quantity < quantity) {
+                    Swal.fire({
+                         icon: "error",
+                         title: "Oops...",
+                         text: "not enough!",
+                    });
+               } 
+               else {
+                    fetch("http://localhost:5000/purchasedFoods", {
+                         method: "POST",
+                         headers: {
+                              "content-type": "application/json",
+                         },
+                         body: JSON.stringify(allData),
+                    })
+                         .then((res) => res.json())
+                         .then((data) => {
+                              if (data.acknowledged) {
+                                   Swal.fire(
+                                        "Good job!",
+                                        "Product added successfully",
+                                        "success"
+                                   );
+                              }
+                              console.log(data);
+                         });
+               }
+          }
      };
+
      return (
           <div>
                <h2 className="text-center text-3xl font-bold mt-5 ">
-                    Add Items Here
+                    Purchased Here
                </h2>
                <div className=" bg-[#F3F3F3] container mx-auto my-10 border">
-                    <form onSubmit={handleAddProduct}>
+                    <form onSubmit={handlePurchase}>
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
                               {/* 1st added by*/}
                               <div className="form-control">
@@ -112,6 +114,7 @@ const AddProduct = () => {
                                         </span>
                                    </label>
                                    <input
+                                        defaultValue={foodItems?.food_name}
                                         placeholder="Food Name"
                                         name="foodName"
                                         className="input input-bordered "
@@ -121,18 +124,18 @@ const AddProduct = () => {
                               <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">
-                                        Food Image
+                                             Food Image
                                         </span>
                                    </label>
                                    <input
-                                        placeholder="Food Image URL"
+                                        defaultValue={foodItems?.food_image}
                                         name="foodImage"
                                         type="text"
                                         className="input input-bordered "
                                    />
                               </div>
                               {/* 4th Food Category*/}
-                              <div className="form-control">
+                              {/* <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">
                                              Food Category
@@ -145,7 +148,7 @@ const AddProduct = () => {
                                         className="input input-bordered "
                                         required
                                    />
-                              </div>
+                              </div> */}
                               {/* 5th quantity  */}
                               <div className="form-control">
                                    <label className="label">
@@ -161,23 +164,23 @@ const AddProduct = () => {
                                         required
                                    />
                               </div>
-                              {/* 6th Price*/}
+                              {/* 6th date*/}
                               <div className="form-control">
                                    <label className="label">
-                                        <span className="label-text">
-                                             Price
+                                        <span className="label-text dark:text-white">
+                                             Date
                                         </span>
                                    </label>
                                    <input
-                                        type="text"
-                                        placeholder="Price"
-                                        name="price"
-                                        className="input input-bordered "
-                                        required
+                                        value={moment().format(
+                                             "dddd, MMMM YYYY"
+                                        )}
+                                        name="date"
+                                        className="input input-bordered dark:text-black"
                                    />
                               </div>
                               {/* 7th Food Origin (Country) */}
-                              <div className="form-control">
+                              {/* <div className="form-control">
                                    <label className="label">
                                         <span className="label-text ">
                                              Food Origin (Country)
@@ -188,9 +191,9 @@ const AddProduct = () => {
                                         name="foodOrigin"
                                         className="input input-bordered "
                                    />
-                              </div>
+                              </div> */}
                               {/* 8th  description */}
-                              <div className="form-control col-span-1 md:col-span-2">
+                              {/* <div className="form-control col-span-1 md:col-span-2">
                                    <label className="label">
                                         <span className="label-text ">
                                              description
@@ -203,13 +206,28 @@ const AddProduct = () => {
                                         className="input input-bordered"
                                         required
                                    />
+                              </div> */}
+                              {/* price */}
+                              <div className="form-control col-span-1 md:col-span-2">
+                                   <label className="label">
+                                        <span className="label-text">
+                                             Price
+                                        </span>
+                                   </label>
+                                   <input
+                                        type="text"
+                                        // placeholder="Price"
+                                        defaultValue={foodItems?.price}
+                                        name="price"
+                                        className="input input-bordered"
+                                   />
                               </div>
                          </div>
                          <div className="form-control p-10">
                               <input
                                    type="submit"
                                    className="btn bg-[#FF3811] border-none text-white"
-                                   value="Add This Food Item"
+                                   value="Purchased Food"
                               />
                          </div>
                     </form>
@@ -218,4 +236,4 @@ const AddProduct = () => {
      );
 };
 
-export default AddProduct;
+export default PurchasedFood;

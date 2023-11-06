@@ -10,6 +10,7 @@ import ShowAllFoodItemsSection from "../Pages/ShowAllFoodItemsSection/ShowAllFoo
 import ShowSingleFood from "../Pages/ShowAllFoodItemsSection/ShowSingleFood";
 import BlogSection from "../Components/BlogSection/BlogSection";
 import OrderPage from "../Pages/OrderPage/OrderPage";
+import PurchasedFood from "../Pages/PurchasedPage/PurchasedFood";
 
 const myCreatedRouter = createBrowserRouter([
      {
@@ -28,7 +29,6 @@ const myCreatedRouter = createBrowserRouter([
                               <AddProduct></AddProduct>
                          </PrivateRoute>
                     ),
-                    // loader:({params})=>(`http://localhost:5000/allfoods/${params.id}`)
                },
                {
                     path: "/allFoodItems",
@@ -44,9 +44,13 @@ const myCreatedRouter = createBrowserRouter([
                     path: "/details/:id",
                     element: <ShowSingleFood></ShowSingleFood>,
                     loader: ({ params }) =>
-                         fetch(
-                              `http://localhost:5000/allfoods/${params.id}`
-                         ),
+                         fetch(`http://localhost:5000/allfoods/${params.id}`),
+               },
+               {
+                    path: "/purchasedFood/:id",
+                    element: <PurchasedFood></PurchasedFood>,
+                    loader: ({ params }) =>
+                         fetch(`http://localhost:5000/allfoods/${params.id}`),
                },
                {
                     path: "/login",

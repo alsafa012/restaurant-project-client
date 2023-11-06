@@ -10,7 +10,8 @@ const ShowSingleFood = () => {
           food_image,
           food_category,
           price,
-          made_by,
+          quantity,
+          added_by,
           food_origin,
           description,
      } = singleFoodInfo;
@@ -31,7 +32,8 @@ const ShowSingleFood = () => {
                          <p>Food-Name: {food_name}</p>
                          <p>food_category: {food_category}</p>
                          <p>Price: {price}</p>
-                         <p>Made_by: {made_by}</p>
+                         <p>added_by: {added_by}</p>
+                         <p>quantity: {quantity}</p>
                          <p>food_origin: {food_origin}</p>
                          {/* <p>Rating: {rating}</p> */}
 
@@ -40,7 +42,7 @@ const ShowSingleFood = () => {
                               {/* Description: {description.slice(0, 80)} */}
                          </p>
 
-                         <Link>
+                         <Link to={`/purchasedFood/${_id}`}>
                               <button className="btn mt-3 text-white bg-[#FF444A]">
                                    Order naw
                               </button>
