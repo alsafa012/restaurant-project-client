@@ -6,11 +6,11 @@ import { MdOutlineHomeWork } from "react-icons/md";
 
 const FirstExtraSection = () => {
      return (
-          <div>
+          <div className='container mx-auto'>
           <div className="my-5 md:my-14">
           <div>
                <h2 className="text-center text-3xl font-bold">
-                   <span className='text-[#fcb900]'>Hello! </span> Welcome to Our Restaurant
+                   <span className='text-[#fcb900]'></span> Welcome to Our Restaurant..
                </h2>
                <p className="w-[50%] mx-auto text-center my-5 text-sm font-light">
                At our restaurant, we believe in creating unique dining experiences for our valued customers. Our culinary creations are tailored to your tastes and preferences. We don't want you to ask, "Can I dine here?" but rather, "When can I savor our delicious dishes?"

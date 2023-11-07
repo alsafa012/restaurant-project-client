@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 const PurchasedFood = () => {
      const { user } = useContext(AuthContext);
      const foodItems = useLoaderData();
-     console.log(foodItems);
+     const {_id}=foodItems;
+     // console.log(foodItems);
      const handlePurchase = (e) => {
           e.preventDefault();
           const form = e.target;
@@ -27,8 +28,13 @@ const PurchasedFood = () => {
                price: price,
                added_by: addedBy,
                quantity: quantity,
+               // ordered
           };
-          console.log(allData);
+          const previousOrder = parseInt(foodItems.ordered);
+          const afterOrder = previousOrder + 1;
+          const updatedOrder = { afterOrder };
+          console.log(updatedOrder);
+          // console.log(allData);
           if (foodItems.email === email) {
                // return alert('same user');
                return Swal.fire({
@@ -41,7 +47,7 @@ const PurchasedFood = () => {
                     Swal.fire({
                          icon: "error",
                          title: "Oops...",
-                         text: "item is not available", 
+                         text: "item is not available",
                     });
                } else {
                     if (foodItems?.quantity < quantity) {
@@ -51,13 +57,16 @@ const PurchasedFood = () => {
                               text: "Product quantity does not exist",
                          });
                     } else {
-                         fetch("http://localhost:5000/purchasedFoods", {
-                              method: "POST",
-                              headers: {
-                                   "content-type": "application/json",
-                              },
-                              body: JSON.stringify(allData),
-                         })
+                         fetch(
+                              "http://localhost:5000/purchasedFoods",
+                              {
+                                   method: "POST",
+                                   headers: {
+                                        "content-type": "application/json",
+                                   },
+                                   body: JSON.stringify(allData),
+                              }
+                         )
                               .then((res) => res.json())
                               .then((data) => {
                                    if (data.acknowledged) {
@@ -69,6 +78,20 @@ const PurchasedFood = () => {
                                    }
                                    console.log(data);
                               });
+
+
+                              fetch(`http://localhost:5000/allFoods/${_id}`,{
+                                   method:"PATCH",
+                                   headers:{
+                                        "content-type": "application/json",
+                                   },
+                                   body: JSON.stringify(updatedOrder)
+                              })
+                              .then(res=>res.json())
+                              .then(data=>{
+                                   console.log(data);
+                              })
+
                     }
                }
           }

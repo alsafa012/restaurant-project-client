@@ -10,6 +10,7 @@ const ShowMyAddedFoods = ({ data }) => {
           _id,
           email,
           food_name,
+          food_category,
           food_image,
           price,
           quantity,
@@ -31,7 +32,7 @@ const ShowMyAddedFoods = ({ data }) => {
                     <div className="md:w-[70%]">
                          <div className="text-xl font-medium space-y-2 py-2">
                               <p>Food_name: {food_name}</p>
-                              <p>Food_category: {added_by}</p>
+                              <p>Food_category: {food_category}</p>
                               <p>Price: ${price}</p>
                               <p>Quantity: {quantity}</p>
                               <p>Food-Origin: {food_origin}</p>

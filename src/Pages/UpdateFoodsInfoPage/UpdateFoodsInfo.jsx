@@ -64,7 +64,7 @@ const UpdateFoodsInfo = () => {
                confirmButtonText: "Yes, Update it!",
           }).then((result) => {
                if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/allfoods/${_id}`, {
+                    fetch(`http://localhost:5000/allFoods/${_id}`, {
                          method: "PUT",
                          headers: {
                               "content-type": "application/json",

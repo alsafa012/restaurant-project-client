@@ -16,7 +16,7 @@ const ShowAllFoodItemsSection = () => {
 
      useEffect(() => {
           fetch(
-               `http://localhost:5000/allfoods?page=${currentPage}&size=${itemsPerPage}`
+               `http://localhost:5000/allFoods?page=${currentPage}&size=${itemsPerPage}`
           )
                .then((res) => res.json())
                .then((data) => {

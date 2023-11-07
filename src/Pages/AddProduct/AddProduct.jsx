@@ -12,23 +12,24 @@ const AddProduct = () => {
           const foodName = form.foodName.value;
           const foodImage = form.foodImage.value;
           const foodCategory = form.foodCategory.value;
-          const price = form.price.value || '0';
+          const price = form.price.value || "0";
           const foodOrigin = form.foodOrigin.value;
-          const quantity = form.quantity.value || '0';
+          const quantity = form.quantity.value || "0";
           const description = form.description.value;
           const allData = {
                email,
                food_name: foodName,
-               food_image:foodImage,
+               food_image: foodImage,
                food_category: foodCategory,
                price: price,
                added_by: addedBy,
                food_origin: foodOrigin,
                description: description,
                quantity: quantity,
+               ordered: 0,
           };
           console.log(allData);
-          fetch("http://localhost:5000/allfoods", {
+          fetch("http://localhost:5000/allFoods", {
                method: "POST",
                headers: {
                     "content-type": "application/json",
@@ -106,7 +107,7 @@ const AddProduct = () => {
                               <div className="form-control">
                                    <label className="label">
                                         <span className="label-text">
-                                        Food Image
+                                             Food Image
                                         </span>
                                    </label>
                                    <input

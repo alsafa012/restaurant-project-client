@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PageTitle from "../../Components/PageTitle/PageTitle";
 
 const ShowAllFoods = ({ food }) => {
      console.log(Object.keys(food).join(", "));
@@ -16,6 +17,7 @@ const ShowAllFoods = ({ food }) => {
      } = food;
      return (
           <div className="my-5">
+               <PageTitle title="All Foods"></PageTitle>
                <div className="md:flex items-center gap-2 bg-base-100 shadow-xl border-2  rounded-xl">
                     <div className="md:w-[30%]">
                          <img

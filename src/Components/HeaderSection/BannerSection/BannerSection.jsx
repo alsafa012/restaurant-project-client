@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BannerSection = () => {
      return (
@@ -26,12 +27,14 @@ const BannerSection = () => {
                                              </p>
 
                                              <div className="flex gap-2 justify-center">
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
-                                                       Discover More
-                                                  </button>
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
+                                                  <Link to="/allFoodItems">
+                                                       <button className="btn bg-[#FF444A] text-white border-none">
+                                                            Our Menus
+                                                       </button>
+                                                  </Link>
+                                                  {/* <button className="btn bg-[#FF444A] text-white border-none">
                                                        Latest Project
-                                                  </button>
+                                                  </button> */}
                                              </div>
                                         </div>
                                    </div>
@@ -66,12 +69,14 @@ const BannerSection = () => {
                                              </p>
 
                                              <div className="flex gap-2 justify-center">
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
-                                                       Discover More
-                                                  </button>
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
+                                                  <Link to="/allFoodItems">
+                                                       <button className="btn bg-[#FF444A] text-white border-none">
+                                                            Our Menus
+                                                       </button>
+                                                  </Link>
+                                                  {/* <button className="btn bg-[#FF444A] text-white border-none">
                                                        Latest Project
-                                                  </button>
+                                                  </button> */}
                                              </div>
                                         </div>
                                    </div>
@@ -106,12 +111,11 @@ const BannerSection = () => {
                                              </p>
 
                                              <div className="flex gap-2 justify-center">
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
-                                                       Discover More
-                                                  </button>
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
-                                                       Latest Project
-                                                  </button>
+                                                  <Link to="/allFoodItems">
+                                                       <button className="btn bg-[#FF444A] text-white border-none">
+                                                            Our Menus
+                                                       </button>
+                                                  </Link>
                                              </div>
                                         </div>
                                    </div>
@@ -146,12 +150,11 @@ const BannerSection = () => {
                                              </p>
 
                                              <div className="flex gap-2 justify-center">
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
-                                                       Discover More
-                                                  </button>
-                                                  <button className="btn bg-[#FF444A] text-white border-none">
-                                                       Latest Project
-                                                  </button>
+                                                  <Link to="/allFoodItems">
+                                                       <button className="btn bg-[#FF444A] text-white border-none">
+                                                            Our Menus
+                                                       </button>
+                                                  </Link>
                                              </div>
                                         </div>
                                    </div>
