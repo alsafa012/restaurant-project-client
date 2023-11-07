@@ -19,16 +19,16 @@ const ShowAllFoods = ({ food }) => {
           <div className="my-5">
                <PageTitle title="All Foods"></PageTitle>
                <div className="md:flex items-center gap-2 bg-base-100 shadow-xl border-2  rounded-xl">
-                    <div className="md:w-[30%]">
+                    <div className="md:w-[30%] flex justify-center md:justify-start">
                          <img
-                              className=" flex justify-center object-fill w-[300px] h-[300px] rounded-l-xl"
+                              className="object-fill w-[300px] h-[300px] rounded-l-xl"
                               src={food_image}
                               alt="item"
                          />
                     </div>
 
                     <div className="md:w-[70%]">
-                         <div className="text-xl font-medium space-y-2 py-2">
+                         <div className="text-xl text-center md:text-start font-medium space-y-2 py-2">
                               <p>Food-Name: {food_name}</p>
                               <p>Food-Category: {food_category}</p>
                               <p>Price: ${price}</p>
