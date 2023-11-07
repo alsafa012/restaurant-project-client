@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import OrderInfo from "./OrderInfo";
+import PageTitle from "../../Components/PageTitle/PageTitle";
 
 const OrderPage = () => {
      const { user } = useContext(AuthContext);
@@ -14,7 +15,7 @@ const OrderPage = () => {
      useEffect(() => {
           if (user) {
                axios.get(
-                    `http://localhost:5000/purchasedFoods?email=${user.email}`,
+                    `https://restaurant-project-server.vercel.app/purchasedFoods?email=${user.email}`,
                     {
                          withCredentials: true,
                     }
@@ -25,6 +26,7 @@ const OrderPage = () => {
      }, [user]);
      return (
           <div className="min-h-screen container mx-auto">
+               <PageTitle title="My Orders"></PageTitle>
                {myOrders.length === 0 ? (
                     <div className="text-center mx-auto text-xl md:text-3xl font-bold mt-20 space-y-2">
                          <h1>Oops...!</h1>
@@ -40,11 +42,11 @@ const OrderPage = () => {
                          <h2 className="text-3xl text-[#FF444A] font-bold underline lg:text-5xl text-center">
                               Total Order: {myOrders.length}
                          </h2>
-                         <div className="overflow-x-auto">
+                         <div className="">
                               <table className="table">
                                    {/* head */}
                                    <thead className="font-bold">
-                                        <tr>
+                                        <tr className="">
                                              <th>
                                                   <label>
                                                        <input

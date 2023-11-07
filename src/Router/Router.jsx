@@ -23,7 +23,7 @@ const myCreatedRouter = createBrowserRouter([
                {
                     path: "/",
                     element: <Home></Home>,
-                    loader:()=>fetch('http://localhost:5000/allFoods')
+                    loader:()=>fetch('https://restaurant-project-server.vercel.app/allFoods')
                },
                {
                     path: "/addProduct",
@@ -40,7 +40,7 @@ const myCreatedRouter = createBrowserRouter([
                               <ShowAllFoodItemsSection></ShowAllFoodItemsSection>
                          </PrivateRoute>
                     ),
-                    loader: () => fetch("http://localhost:5000/allFoodsCount"),
+                    loader: () => fetch("https://restaurant-project-server.vercel.app/allFoodsCount"),
                },
                {
                     path: "/details/:id",
@@ -50,7 +50,7 @@ const myCreatedRouter = createBrowserRouter([
                          </PrivateRoute>
                     ),
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allFoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allFoods/${params.id}`),
                },
                {
                     path: "/purchasedFood/:id",
@@ -60,13 +60,13 @@ const myCreatedRouter = createBrowserRouter([
                          </PrivateRoute>
                     ),
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allFoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allFoods/${params.id}`),
                },
                {
                     path: "/update/:id",
                     element: <UpdateFoodsInfo></UpdateFoodsInfo>,
                     loader: ({ params }) =>
-                         fetch(`http://localhost:5000/allFoods/${params.id}`),
+                         fetch(`https://restaurant-project-server.vercel.app/allFoods/${params.id}`),
                },
                {
                     path: "/blog",
@@ -95,7 +95,7 @@ const myCreatedRouter = createBrowserRouter([
                               <MyAddedPage></MyAddedPage>
                          </PrivateRoute>
                     ),
-                    loader: () => fetch("http://localhost:5000/allfoods"),
+                    loader: () => fetch("https://restaurant-project-server.vercel.app/allfoods"),
                },
           ],
      },

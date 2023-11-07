@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import ShowMyAddedFoods from './ShowMyAddedFoods';
+import PageTitle from '../../Components/PageTitle/PageTitle';
 
 const MyAddedPage = () => {
      const myAddedFood = useLoaderData();
@@ -19,6 +20,7 @@ const MyAddedPage = () => {
      }, [myAddedFood, user]);
      return (
           <div className='container mx-auto'>
+               <PageTitle title="My Added Foods"></PageTitle>
                <h2 className='font-bold text-3xl lg:text-5xl text-center my-3'>Total Added Food: {loggedUserData.length}</h2>
                <div>
                     {

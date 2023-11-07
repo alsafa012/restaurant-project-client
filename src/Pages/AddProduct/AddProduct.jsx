@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import PageTitle from "../../Components/PageTitle/PageTitle";
 
 const AddProduct = () => {
      const { user } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const AddProduct = () => {
                ordered: 0,
           };
           console.log(allData);
-          fetch("http://localhost:5000/allFoods", {
+          fetch("https://restaurant-project-server.vercel.app/allFoods", {
                method: "POST",
                headers: {
                     "content-type": "application/json",
@@ -52,6 +53,7 @@ const AddProduct = () => {
      };
      return (
           <div>
+               <PageTitle title="Add Food Items"></PageTitle>
                <h2 className="text-center text-3xl font-bold mt-5 text-[#FF444A]">
                     Add Items Here
                </h2>

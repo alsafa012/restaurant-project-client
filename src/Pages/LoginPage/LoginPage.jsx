@@ -3,6 +3,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import PageTitle from "../../Components/PageTitle/PageTitle";
 
 const LoginPage = () => {
      const [showPassword, setShowPassword] = useState(false);
@@ -96,6 +97,7 @@ const LoginPage = () => {
      };
      return (
           <div>
+               <PageTitle title="Login"></PageTitle>
                <div>
                     <p className="text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
                          Login Here..

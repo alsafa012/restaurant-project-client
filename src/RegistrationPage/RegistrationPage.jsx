@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import PageTitle from "../Components/PageTitle/PageTitle";
 
 const RegistrationPage = () => {
      const [showPassword, setShowPassword] = useState(false);
@@ -62,13 +63,16 @@ const RegistrationPage = () => {
                          name,
                          photo,
                     };
-                    fetch("http://localhost:5000/users", {
-                         method: "POST",
-                         headers: {
-                              "Content-Type": "application/json",
-                         },
-                         body: JSON.stringify(user),
-                    })
+                    fetch(
+                         "https://restaurant-project-server.vercel.app/users",
+                         {
+                              method: "POST",
+                              headers: {
+                                   "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify(user),
+                         }
+                    )
                          .then((res) => res.json())
                          .then((data) => {
                               console.log(data);
@@ -88,6 +92,7 @@ const RegistrationPage = () => {
      };
      return (
           <div>
+               <PageTitle title="Registration"></PageTitle>
                <p className=" text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
                     Sign Up Page
                </p>

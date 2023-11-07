@@ -58,7 +58,7 @@ const PurchasedFood = () => {
                          });
                     } else {
                          fetch(
-                              "http://localhost:5000/purchasedFoods",
+                              "https://restaurant-project-server.vercel.app/purchasedFoods",
                               {
                                    method: "POST",
                                    headers: {
@@ -80,7 +80,7 @@ const PurchasedFood = () => {
                               });
 
 
-                              fetch(`http://localhost:5000/allFoods/${_id}`,{
+                              fetch(`https://restaurant-project-server.vercel.app/allFoods/${_id}`,{
                                    method:"PATCH",
                                    headers:{
                                         "content-type": "application/json",
