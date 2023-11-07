@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const PurchasedFood = () => {
      const { user } = useContext(AuthContext);
      const foodItems = useLoaderData();
-     const {_id}=foodItems;
+     const { _id } = foodItems;
      // console.log(foodItems);
      const handlePurchase = (e) => {
           e.preventDefault();
@@ -32,8 +32,11 @@ const PurchasedFood = () => {
           };
           const previousOrder = parseInt(foodItems.ordered);
           const afterOrder = previousOrder + 1;
-          const updatedOrder = { afterOrder };
+          const previousQuantity = parseInt(foodItems.quantity);
+          const afterQuantity = Math.abs(previousQuantity - quantity);
+          const updatedOrder = { afterOrder, afterQuantity };
           console.log(updatedOrder);
+          // console.log(afterQuantity);
           // console.log(allData);
           if (foodItems.email === email) {
                // return alert('same user');
@@ -44,7 +47,7 @@ const PurchasedFood = () => {
                });
           } else {
                if (foodItems?.quantity === 0) {
-                    Swal.fire({
+                   return Swal.fire({
                          icon: "error",
                          title: "Oops...",
                          text: "item is not available",
@@ -79,19 +82,20 @@ const PurchasedFood = () => {
                                    console.log(data);
                               });
 
-
-                              fetch(`https://restaurant-project-server.vercel.app/allFoods/${_id}`,{
-                                   method:"PATCH",
-                                   headers:{
+                         fetch(
+                              `https://restaurant-project-server.vercel.app/allFoods/${_id}`,
+                              {
+                                   method: "PATCH",
+                                   headers: {
                                         "content-type": "application/json",
                                    },
-                                   body: JSON.stringify(updatedOrder)
-                              })
-                              .then(res=>res.json())
-                              .then(data=>{
+                                   body: JSON.stringify(updatedOrder),
+                              }
+                         )
+                              .then((res) => res.json())
+                              .then((data) => {
                                    console.log(data);
-                              })
-
+                              });
                     }
                }
           }

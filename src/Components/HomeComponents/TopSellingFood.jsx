@@ -7,8 +7,8 @@ const TopSellingFood = () => {
      console.log(allFoodItems);
      const shortedFood = [...allFoodItems].sort((a, b) =>b.ordered - a.ordered)
      return (
-          <div className="container mx-auto">
-               <p className="text-center text-3xl font-bold">
+          <div className="container mx-auto my-10">
+               <p className="text-center text-3xl font-bold my-5">
                     Top-Selling-Food-Items
                </p>
                <div>

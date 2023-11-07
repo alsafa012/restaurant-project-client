@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import PageTitle from '../../Components/PageTitle/PageTitle';
 
 const ShowSingleFood = () => {
      const singleFoodInfo = useLoaderData();
@@ -28,6 +29,7 @@ const ShowSingleFood = () => {
                </div>
 
                <div className="md:w-[70%]">
+                    <PageTitle title="Food-Detail"></PageTitle>
                     <div className="text-xl font-medium space-y-2 py-2">
                          <p>Food-Name: {food_name}</p>
                          <p>food_category: {food_category}</p>

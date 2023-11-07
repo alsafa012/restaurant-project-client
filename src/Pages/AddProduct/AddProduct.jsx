@@ -28,6 +28,7 @@ const AddProduct = () => {
                description: description,
                quantity: quantity,
                ordered: 0,
+               count: 0,
           };
           console.log(allData);
           fetch("https://restaurant-project-server.vercel.app/allFoods", {
