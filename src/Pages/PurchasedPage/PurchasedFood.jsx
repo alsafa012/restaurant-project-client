@@ -47,14 +47,21 @@ const PurchasedFood = () => {
                });
           } else {
                if (foodItems?.quantity === 0) {
-                   return Swal.fire({
+                    return Swal.fire({
                          icon: "error",
                          title: "Oops...",
                          text: "item is not available",
                     });
                } else {
-                    if (foodItems?.quantity < quantity) {
-                         Swal.fire({
+                    if ((quantity <= 0)) {
+                         return Swal.fire({
+                              icon: "error",
+                              title: "Oops...",
+                              text: "you must purchased at least one item",
+                         });
+                    }
+                   else if (foodItems?.quantity < quantity) {
+                        return Swal.fire({
                               icon: "error",
                               title: "Oops...",
                               text: "Product quantity does not exist",
