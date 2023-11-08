@@ -8,13 +8,14 @@ const ShowAllFoodItemsSection = () => {
 
      const [allFoodItem, setAllFoodItem] = useState([]);
      const [searchFood, setSearchFood] = useState([]);
+     const [search, setSearch] = useState("");
 
      const [currentPage, setCurrentPage] = useState(0);
      // const [itemsPerPage, setItemsPerPage] = useState(10);
      const [itemsPerPage, setItemsPerPage] = useState(() => {
           return parseInt(localStorage.getItem("itemsPerPage")) || 10;
      });
-     
+
      const numberOfPages = Math.ceil(count / itemsPerPage);
      const pages = [...Array(numberOfPages).keys()];
      // const pages = Array.from({ length: numberOfPages }, (_, index) => index);
@@ -22,18 +23,19 @@ const ShowAllFoodItemsSection = () => {
 
      useEffect(() => {
           fetch(
-               `https://restaurant-project-server.vercel.app/allFoods?page=${currentPage}&size=${itemsPerPage}`
+               `https://restaurant-project-server.vercel.app/allFoods?page=${currentPage}&size=${itemsPerPage}&search=${search}`
           )
                .then((res) => res.json())
                .then((data) => {
                     setAllFoodItem(data);
                     setSearchFood(data);
                });
-     }, [currentPage, itemsPerPage]);
+     }, [currentPage, itemsPerPage,search]);
 
      const handleClickBtn = (e) => {
           e.preventDefault();
           const search = document.getElementById("inputField").value;
+          setSearch(search);
           if (search.length) {
                const filterFoods = allFoodItem.filter((item) =>
                     item.food_name.toLowerCase().includes(search.toLowerCase())
@@ -114,4 +116,3 @@ const ShowAllFoodItemsSection = () => {
 };
 
 export default ShowAllFoodItemsSection;
-

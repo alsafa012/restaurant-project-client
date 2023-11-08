@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 
 const ShowAllFoods = ({ food }) => {
-     console.log(Object.keys(food).join(", "));
+     // console.log(Object.keys(food).join(", "));
      const {
           _id,
           food_name,
