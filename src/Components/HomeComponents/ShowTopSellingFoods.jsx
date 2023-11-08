@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ShowTopSellingFoods = ({ food }) => {
      const { _id, food_name, food_image, food_category, price, ordered } = food;
@@ -18,6 +19,11 @@ const ShowTopSellingFoods = ({ food }) => {
                          <p>Food-Category: {food_category}</p>
                          <p>Price: ${price}</p>
                          <p>Total order: {ordered}</p>
+                         <Link to={`/details/${_id}`}>
+                              <button className="btn mt-3 text-white bg-[#FF444A]">
+                                   See Details
+                              </button>
+                         </Link>
                     </div>
                </div>
           </div>

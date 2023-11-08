@@ -10,9 +10,15 @@ const ShowAllFoodItemsSection = () => {
      const [searchFood, setSearchFood] = useState([]);
 
      const [currentPage, setCurrentPage] = useState(0);
+     // const [itemsPerPage, setItemsPerPage] = useState(10);
      const [itemsPerPage, setItemsPerPage] = useState(() => {
           return parseInt(localStorage.getItem("itemsPerPage")) || 10;
      });
+     
+     const numberOfPages = Math.ceil(count / itemsPerPage);
+     const pages = [...Array(numberOfPages).keys()];
+     // const pages = Array.from({ length: numberOfPages }, (_, index) => index);
+     console.log("pages:", pages);
 
      useEffect(() => {
           fetch(
@@ -24,10 +30,6 @@ const ShowAllFoodItemsSection = () => {
                     setSearchFood(data);
                });
      }, [currentPage, itemsPerPage]);
-
-     const numberOfPages = Math.ceil(count / itemsPerPage);
-     const pages = [...Array(numberOfPages).keys()];
-     console.log("pages:", pages);
 
      const handleClickBtn = (e) => {
           e.preventDefault();
@@ -80,7 +82,7 @@ const ShowAllFoodItemsSection = () => {
                     ))}
                </div>
                <div className="border text-center mt-5 mb-10">
-                    <p>currentPage:{currentPage}</p>
+                    <p>currentPage:{currentPage + 1}</p>
 
                     {pages.map((page) => (
                          <button
@@ -92,7 +94,7 @@ const ShowAllFoodItemsSection = () => {
                               }
                               key={page}
                          >
-                              {page}
+                              {page + 1}
                          </button>
                     ))}
                     <select
@@ -112,3 +114,4 @@ const ShowAllFoodItemsSection = () => {
 };
 
 export default ShowAllFoodItemsSection;
+

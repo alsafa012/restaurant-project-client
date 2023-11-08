@@ -12,7 +12,7 @@ const BannerSection = () => {
                               className="carousel-item relative w-full "
                          >
                               <img
-                                   src=" https://i.ibb.co/dcH28jR/1647973541988-restaurant-banner.png"
+                                   src="https://i.ibb.co/mq4RZCz/ifs-hero-food-still-life-1920x1080x72.jpg"
                                    className="object-cover w-full "
                               />
                               <div className="absolute h-full flex gap-4 items-center top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] w-full">
@@ -54,7 +54,7 @@ const BannerSection = () => {
                               className="carousel-item relative w-full"
                          >
                               <img
-                                   src="https://i.ibb.co/F3yjZPZ/attachment.jpg"
+                                   src=" https://i.ibb.co/dcH28jR/1647973541988-restaurant-banner.png"
                                    className="object-cover w-full "
                               />
                               <div className="absolute h-full flex gap-4 items-center top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] w-full">
@@ -96,7 +96,8 @@ const BannerSection = () => {
                               className="carousel-item relative w-full"
                          >
                               <img
-                                   src="https://i.ibb.co/sRVLTmH/images-1.jpg"
+                                   src="https://i.ibb.co/VjzKSxh/Italian-food-BI.jpg"
+                                   // src="https://i.ibb.co/tBTvLZd/sam-moghadam-khamseh-wg551-YMfe-Oc-unsplash.jpg"
                                    className="w-full object-cover"
                               />
                               <div className="absolute h-full flex gap-4 items-center top-0 left-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] w-full">
