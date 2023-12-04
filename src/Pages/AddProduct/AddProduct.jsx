@@ -71,7 +71,8 @@ const AddProduct = () => {
                                    <input
                                         type="text"
                                         placeholder="name"
-                                        defaultValue={user?.displayName}
+                                        // defaultValue={user?.displayName}
+                                        value={user?.displayName}
                                         name="name"
                                         className="input input-bordered "
                                         required
@@ -87,7 +88,8 @@ const AddProduct = () => {
                                    <input
                                         type="text"
                                         placeholder="name"
-                                        defaultValue={user?.email}
+                                        // defaultValue={user?.email}
+                                        value={user?.email}
                                         name="email"
                                         className="input input-bordered "
                                         required

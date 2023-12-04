@@ -13,7 +13,7 @@ const BannerSection = () => {
                          >
                               <img
                                    src="https://i.ibb.co/mq4RZCz/ifs-hero-food-still-life-1920x1080x72.jpg"
-                                   className="object-cover w-full "
+                                   className="object-cover w-full"
                               />
                               <div className="absolute h-full flex gap-4 items-center top-0 left-0 w-full">
                                    <div className="mx-auto">

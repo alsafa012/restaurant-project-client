@@ -3,12 +3,16 @@ import { useLoaderData } from "react-router-dom";
 import ShowAllFoods from "./ShowAllFoods";
 
 const ShowAllFoodItemsSection = () => {
-     const { count } = useLoaderData();
-     console.log(count);
+     // const categoryMap=['']
 
+     const { count } = useLoaderData();
+     // console.log(count);
      const [allFoodItem, setAllFoodItem] = useState([]);
      const [searchFood, setSearchFood] = useState([]);
      const [search, setSearch] = useState("");
+     const [asc, setAss] = useState(true);
+     const [category, setCategory] = useState("");
+     // console.log(category);
 
      const [currentPage, setCurrentPage] = useState(0);
      // const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -19,22 +23,35 @@ const ShowAllFoodItemsSection = () => {
      const numberOfPages = Math.ceil(count / itemsPerPage);
      const pages = [...Array(numberOfPages).keys()];
      // const pages = Array.from({ length: numberOfPages }, (_, index) => index);
-     console.log("pages:", pages);
-
+     // console.log("pages:", pages);
+     // const categoryFilter = allFoodItem.filter(item=> item.category === )
      useEffect(() => {
           fetch(
-               `https://restaurant-project-server.vercel.app/allFoods?page=${currentPage}&size=${itemsPerPage}&search=${search}`
+               `https://restaurant-project-server.vercel.app/allFoods?page=${currentPage}&size=${itemsPerPage}&search=${search}&sort=${
+                    asc ? "asc" : "des"
+               }&category=${category}`
           )
                .then((res) => res.json())
                .then((data) => {
+                    // setSearchCategory(data);
                     setAllFoodItem(data);
                     setSearchFood(data);
                });
-     }, [currentPage, itemsPerPage,search]);
+     }, [currentPage, itemsPerPage, search, asc, category]);
+
+     // sort by category
+     const handleCategory = () => {
+          // const category = e.target.category.value;
+          const category = document.getElementById("cat-id").value;
+          // setCategory(allFoodItem)
+          setCategory(category);
+          // console.log(category);
+     };
 
      const handleClickBtn = (e) => {
           e.preventDefault();
           const search = document.getElementById("inputField").value;
+
           setSearch(search);
           if (search.length) {
                const filterFoods = allFoodItem.filter((item) =>
@@ -43,13 +60,14 @@ const ShowAllFoodItemsSection = () => {
                setSearchFood(filterFoods);
           } else {
                setSearchFood(allFoodItem);
+               // setAllFoodItem(allFoodItem);
           }
           document.getElementById("inputField").value = "";
      };
 
      const handleItemPerPage = (e) => {
           const val = parseInt(e.target.value);
-          console.log(val);
+          // console.log(val);
           setItemsPerPage(val);
           localStorage.setItem("itemsPerPage", val);
           setCurrentPage(0);
@@ -72,6 +90,36 @@ const ShowAllFoodItemsSection = () => {
                          >
                               Search
                          </button>
+                    </div>
+                    <div>
+                         <button onClick={() => setAss(!asc)} className="btn">
+                              {asc ? "asc" : "des"}
+                         </button>
+                         {/* <select name="sddsd" id=""></select> */}
+                         {/* {allFoodItem.map(item=> ) } */}
+
+                         <select
+                              onChange={handleCategory}
+                              // name="category"
+                              id="cat-id"
+                              className="input input-bordered text-black"
+                         >
+                              <option value="Soft Drink">Soft Drink</option>
+                              <option value="Dessert">Dessert</option>
+                              <option value="Cold Coffee">Cold Coffee</option>
+                              {/* <option value=""></option> */}
+                              {/* {allFoodItem.map((item) => (
+                                   <option
+                                        className="text-black"
+                                        key={item._id}
+                                        // value={item.food_category}
+                                        // name="category"
+                                   >
+                                        {item.food_category}
+                                   </option>
+                              ))} */}
+                         </select>
+                         {/* <button className="btn">price</button> */}
                     </div>
                </div>
 

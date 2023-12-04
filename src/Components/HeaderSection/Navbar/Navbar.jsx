@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
      const { user, userSignOut } = useContext(AuthContext);
-
      const navigate = useNavigate();
      const handleSignOut = () => {
           // userSignOut()
@@ -233,7 +232,7 @@ const Navbar = () => {
                                                                  }
                                                             </a>
                                                        </li>
-                                                       
+
                                                        <li>
                                                             <Link
                                                                  to="/myAddedFood"
