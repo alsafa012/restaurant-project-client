@@ -75,7 +75,8 @@ const ShowAllFoodItemsSection = () => {
 
      return (
           <div className="container mx-auto">
-               <div className="w-full mx-auto text-center">
+               
+               <div className="w-full mx-auto text-center relative">
                     <div className="mt-4 md:mt-5 relative">
                          <input
                               id="inputField"
@@ -91,35 +92,27 @@ const ShowAllFoodItemsSection = () => {
                               Search
                          </button>
                     </div>
-                    <div>
-                         <button onClick={() => setAss(!asc)} className="btn">
-                              {asc ? "asc" : "des"}
+                    <div className="space-x-5 md:space-x-0">
+                         <button
+                              onClick={() => setAss(!asc)}
+                              className="btn bg-[#FF444A] border-none text-white my-5 md:my-0 md:absolute top-0 left-10"
+                         >
+                              {asc
+                                   ? "Sort by quantity asc"
+                                   : "Sort by quantity des"}
                          </button>
-                         {/* <select name="sddsd" id=""></select> */}
-                         {/* {allFoodItem.map(item=> ) } */}
 
                          <select
                               onChange={handleCategory}
-                              // name="category"
+       
                               id="cat-id"
-                              className="input input-bordered text-black"
+                              className="input input-bordered text-black md:absolute top-0 right-10"
                          >
                               <option value="Soft Drink">Soft Drink</option>
                               <option value="Dessert">Dessert</option>
                               <option value="Cold Coffee">Cold Coffee</option>
-                              {/* <option value=""></option> */}
-                              {/* {allFoodItem.map((item) => (
-                                   <option
-                                        className="text-black"
-                                        key={item._id}
-                                        // value={item.food_category}
-                                        // name="category"
-                                   >
-                                        {item.food_category}
-                                   </option>
-                              ))} */}
                          </select>
-                         {/* <button className="btn">price</button> */}
+             
                     </div>
                </div>
 
