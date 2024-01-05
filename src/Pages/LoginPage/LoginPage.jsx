@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import PageTitle from "../../Components/PageTitle/PageTitle";
-
+import { MdNavigateBefore } from "react-icons/md";
 const LoginPage = () => {
      const [showPassword, setShowPassword] = useState(false);
      const { user, googleSignIn, userSignIn } = useContext(AuthContext);
@@ -96,49 +96,56 @@ const LoginPage = () => {
                });
      };
      return (
-          <div>
+          <div className="min-h-screen py-5 md:py-10 bg-[#2a2c39]">
                <PageTitle title="Login"></PageTitle>
-               <div>
+
+               <div className="relative light-bg border text-white w-4/5 md:w-1/2 lg:w-1/3 mx-auto p-5 rounded-xl">
                     <p className="text-3xl font-bold mb-6 text-center text-[#FF444A] mt-5">
                          Login Here..
                     </p>
+                    <Link to="/">
+                         <button className="btn bg-[#FF444A] text-white border-none absolute top-0 left-0">
+                              <MdNavigateBefore />
+                              Home
+                         </button>
+                    </Link>
                     <form
                          onSubmit={handleLogin}
-                         className="w-4/5 md:w-1/2 mx-auto"
+                         className="mx-auto"
                     >
                          <div className="form-control">
                               <label className="label">
-                                   <span className="label-text">Email</span>
+                                   <span className="">Email</span>
                               </label>
                               <input
                                    type="text"
                                    name="email"
                                    placeholder="Email"
-                                   className="input input-bordered"
+                                   className="input input-bordered text-black"
                                    required
                               />
                          </div>
                          <div className="form-control relative">
                               <label className="label">
-                                   <span className="label-text">Password</span>
+                                   <span className="">Password</span>
                               </label>
                               <input
                                    type={showPassword ? "text" : "password"}
                                    name="password"
                                    placeholder="Password"
-                                   className="input input-bordered"
+                                   className="input input-bordered text-black"
                                    required
                               />
                               <label className="label mt-3">
                                    <a
                                         href="#"
-                                        className="label-text-alt link link-hover"
+                                        className="-alt link link-hover"
                                    >
                                         Forgot password?
                                    </a>
                               </label>
                               <span
-                                   className="text-xl absolute top-[40%] right-4"
+                                   className="text-xl absolute top-[40%] right-4 text-black"
                                    onClick={() =>
                                         setShowPassword(!showPassword)
                                    }
@@ -158,7 +165,7 @@ const LoginPage = () => {
                               )}
                          </h3>
                          <div className="form-control mt-6">
-                              <button className="btn text-white bg-[#FF444A]">
+                              <button className="btn text-white bg-[#FF444A] border-none">
                                    Login
                               </button>
                          </div>

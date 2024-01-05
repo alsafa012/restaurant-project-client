@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const BannerSection = () => {
      return (
           <div>
-               <div className="container mx-auto">
+               <div className="">
                     <div className="carousel w-full h-[600px] rounded-xl">
                          {/* 1st */}
                          <div
