@@ -5,13 +5,13 @@ import ScrollTrigger from "react-scroll-trigger";
 const Counter = () => {
      const [scrollTrigger, setScrollTrigger] = useState(false);
      return (
-          <div className="container mx-auto my-8">
+          <div className="">
                <ScrollTrigger
                     onEnter={() => setScrollTrigger(true)}
                     onExit={() => setScrollTrigger(false)}
                >
-                    <div className="border-5 border-red-700 relative w-full">
-                    <div className=" h-[300px] bg-[url('https://i.ibb.co/1Xs8qWX/counter-bg.jpg')] bg-cover bg-center opacity-70"></div>
+                    <div className="relative w-full">
+                    <div className="h-[300px] bg-[url('https://i.ibb.co/1Xs8qWX/counter-bg.jpg')] bg-fixed bg-cover object-fill bg-center opacity-70"></div>
                          <div className="absolute top-4 space-y-3 md:space-y-0 md:top-[45%] w-full md:flex md:justify-around text-center md:items-center md:gap-5">
                               <div>
                                    <h2 className="text-3xl md:text-4xl font-bold text-black">

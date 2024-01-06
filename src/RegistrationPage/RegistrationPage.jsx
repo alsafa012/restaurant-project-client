@@ -2,9 +2,9 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import Swal from "sweetalert2";
 import PageTitle from "../Components/PageTitle/PageTitle";
 import { MdNavigateBefore } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const RegistrationPage = () => {
      const [showPassword, setShowPassword] = useState(false);
@@ -92,7 +92,7 @@ const RegistrationPage = () => {
           form.reset();
      };
      return (
-          <div className="min-h-screen py-5 md:py-10 bg-[#2a2c39]">
+          <div className="min-h-screen bg-[#2a2c39] flex justify-center flex-col items-center">
                {/* dark-bg #252734;
                light-bg #2a2c39;
                } */}

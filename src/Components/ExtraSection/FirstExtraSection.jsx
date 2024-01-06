@@ -1,9 +1,7 @@
-import React from 'react';
 import { GiPartyPopper } from "react-icons/gi";
 import { FaHandsHelping } from "react-icons/fa";
 import { BiCommentDetail } from "react-icons/bi";
 import { MdOutlineHomeWork } from "react-icons/md";
-
 const FirstExtraSection = () => {
      return (
           <div className='container mx-auto'>
@@ -16,7 +14,7 @@ const FirstExtraSection = () => {
                At our restaurant, we believe in creating unique dining experiences for our valued customers. Our culinary creations are tailored to your tastes and preferences. We don't want you to ask, "Can I dine here?" but rather, "When can I savor our delicious dishes?"
                </p>
           </div>
-          <div className="grid gap-5  md:grid-cols-2 lg:grid-cols-4 font-light mx-4 md:mx-auto">
+          <div className="w-[95%] grid gap-5  grid-cols-2 lg:grid-cols-4 font-light mx-4 md:mx-auto">
                <div className="text-center space-y-3 shadow-lg py-5 rounded-lg">
                     <div className="flex justify-center text-5xl my-2 ">
                          <MdOutlineHomeWork></MdOutlineHomeWork>

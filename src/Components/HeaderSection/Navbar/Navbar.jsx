@@ -1,10 +1,12 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-
+import { IoClose } from "react-icons/io5";
+import { FaListUl } from "react-icons/fa";
 const Navbar = () => {
      const { user, userSignOut } = useContext(AuthContext);
+     const [toggle, setToggle] = useState(false);
      const navigate = useNavigate();
      const handleSignOut = () => {
           // userSignOut()
@@ -155,33 +157,27 @@ const Navbar = () => {
                     <div className=" navbar bg-black container mx-auto">
                          {/* bg-gradient-to-r from-blue-900 to-blue-900 */}
                          <div className="navbar-start">
-                              <div className="dropdown">
-                                   <label
-                                        tabIndex={0}
-                                        className="btn btn-ghost lg:hidden"
-                                   >
-                                        <svg
-                                             xmlns="http://www.w3.org/2000/svg"
-                                             className="h-5 w-5 text-white"
-                                             fill="none"
-                                             viewBox="0 0 24 24"
-                                             stroke="currentColor"
-                                        >
-                                             <path
-                                                  strokeLinecap="round"
-                                                  strokeLinejoin="round"
-                                                  strokeWidth="2"
-                                                  d="M4 6h16M4 12h8m-8 6h16"
-                                             />
-                                        </svg>
-                                   </label>
-                                   <ul
-                                        tabIndex={0}
-                                        className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "
-                                   >
-                                        {navLists}
-                                   </ul>
-                              </div>
+                         <details className="dropdown mr-5 lg:hidden">
+                                        <summary className="flex justify-center items-center ml-2 md:ml-0">
+                                             <label
+                                                  onClick={() =>
+                                                       setToggle(!toggle)
+                                                  }
+                                                  className="text-white"
+                                             >
+                                                  <button>
+                                                       {toggle ? (
+                                                            <IoClose />
+                                                       ) : (
+                                                            <FaListUl />
+                                                       )}
+                                                  </button>
+                                             </label>
+                                        </summary>
+                                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                             {navLists}
+                                        </ul>
+                                   </details>
                               <img
                                    className="rounded-full h-[50px] w-[50px]"
                                    src="https://i.ibb.co/0ZS9j4k/pngtree-chef-restaurant-logo-png-image-6136204.png"
@@ -225,12 +221,12 @@ const Navbar = () => {
                                              >
                                                   <div>
                                                        <li>
-                                                            <a className="font-medium">
+                                                            <p className="font-medium">
                                                                  User:
                                                                  {
                                                                       user.displayName
                                                                  }
-                                                            </a>
+                                                            </p>
                                                        </li>
 
                                                        <li>

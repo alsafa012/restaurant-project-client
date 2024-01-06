@@ -38,11 +38,11 @@ const OrderPage = () => {
                          </Link>
                     </div>
                ) : (
-                    <div className="">
+                    <div className="overflow-hidden">
                          <h2 className="text-3xl text-[#FF444A] font-bold underline lg:text-5xl text-center">
                               Total Order: {myOrders.length}
                          </h2>
-                         <div className="">
+                         <div className="overflow-x-auto">
                               <table className="table">
                                    {/* head */}
                                    <thead className="font-bold">

@@ -5,11 +5,11 @@ const BannerSection = () => {
      return (
           <div>
                <div className="">
-                    <div className="carousel w-full h-[600px] rounded-xl">
+                    <div className="carousel w-full h-[600px]">
                          {/* 1st */}
                          <div
                               id="slide1"
-                              className="carousel-item relative w-full "
+                              className="carousel-item relative w-full"
                          >
                               <img
                                    src="https://i.ibb.co/mq4RZCz/ifs-hero-food-still-life-1920x1080x72.jpg"

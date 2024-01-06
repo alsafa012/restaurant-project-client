@@ -96,7 +96,7 @@ const LoginPage = () => {
                });
      };
      return (
-          <div className="min-h-screen py-5 md:py-10 bg-[#2a2c39]">
+          <div className="min-h-screen flex justify-center flex-col items-center bg-[#2a2c39]">
                <PageTitle title="Login"></PageTitle>
 
                <div className="relative light-bg border text-white w-4/5 md:w-1/2 lg:w-1/3 mx-auto p-5 rounded-xl">
