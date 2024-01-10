@@ -1,6 +1,6 @@
 # Restaurant Project
 
--    [click_here_for_live_link](https://restaurant-project-d2dc8.web.app)
+-    [click_here_for_live_link](https://restaurant-project-client.vercel.app)
 
 This project is based on the Restaurant Management. Some useful features of my project are written in below
 
