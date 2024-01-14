@@ -4,14 +4,46 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import OrderInfo from "./OrderInfo";
 import PageTitle from "../../Components/PageTitle/PageTitle";
+import Swal from "sweetalert2";
 
 const OrderPage = () => {
      const { user } = useContext(AuthContext);
      // console.log(data)
      const [myOrders, setMyOrders] = useState([]);
-     console.log(myOrders);
-     
-
+     // const [allData, setAllData] = useState([]);
+     // console.log(myOrders);
+     // console.log(allData);
+     // useEffect(() => {
+     //      // Assuming myOrders is an array of data you want to delete
+     //      setAllData(myOrders);
+     //    }, [myOrders]);
+     const handleRemoveAll = () => {
+          Swal.fire({
+               title: "Are you sure?",
+               text: "You won't be able to revert this!",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#3085d6",
+               cancelButtonColor: "#d33",
+               confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+               if (result.isConfirmed) {
+                    axios.delete("https://restaurant-project-server.vercel.app/purchasedFoods")
+                         .then((res) => {
+                              console.log(res.data);
+                              setMyOrders([]);
+                              Swal.fire({
+                                   title: "Deleted!",
+                                   text: "Your file has been deleted.",
+                                   icon: "success",
+                              });
+                         })
+                         .catch((error) => {
+                              console.error(error);
+                         });
+               }
+          });
+     };
      useEffect(() => {
           if (user) {
                axios.get(
@@ -31,7 +63,7 @@ const OrderPage = () => {
                     <div className="text-center mx-auto text-xl md:text-3xl font-bold mt-20 space-y-2">
                          <h1>Oops...!</h1>
                          <h3>No Product Added Yet.</h3>
-                         <Link to={"/"}>
+                         <Link to={"/allFoodItems"}>
                               <button className="btn mt-2 bg-[#FF444A] text-white border-none">
                                    Click Here for Home Page..
                               </button>
@@ -49,10 +81,18 @@ const OrderPage = () => {
                                         <tr className="">
                                              <th>
                                                   <label>
-                                                       <input
+                                                       {/* <input
                                                             type="checkbox"
                                                             className="checkbox"
-                                                       />
+                                                       /> */}
+                                                       <button
+                                                            className="btn btn-sm bg-[#FF444A] text-white border-none"
+                                                            onClick={
+                                                                 handleRemoveAll
+                                                            }
+                                                       >
+                                                            Delete All
+                                                       </button>
                                                   </label>
                                              </th>
                                              <th>Avatar</th>

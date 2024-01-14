@@ -6,6 +6,7 @@ const TopSellingFood = () => {
      const allFoodItems = useLoaderData();
      console.log(allFoodItems);
      const shortedFood = [...allFoodItems].sort((a, b) =>b.ordered - a.ordered)
+     console.log(shortedFood);
      return (
           <div className="container mx-auto my-10">
                <p className="text-center text-3xl font-bold my-5">

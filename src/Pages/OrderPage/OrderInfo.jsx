@@ -13,7 +13,7 @@ const OrderInfo = ({ order, myOrders, setMyOrders }) => {
           added_by,
           date,
      } = order;
-
+     
      const handleRemove = (id) => {
           Swal.fire({
                title: "Are you sure?",
@@ -47,6 +47,9 @@ const OrderInfo = ({ order, myOrders, setMyOrders }) => {
                }
           });
      };
+     // const handleRemoveAll=(data)=>{
+     //      console.log(data);
+     // }
 
 
      return (
