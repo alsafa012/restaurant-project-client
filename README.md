@@ -12,3 +12,7 @@ This project is based on the Restaurant Management. Some useful features of my p
 -    In this project, A specific user can remove or update those food items which items added by
      himself.A User cannot update or remove another users added food items.
 -    In this project,user can order food items and also remove or cancel their orders.
+
+# Restaurant Project Server Side Code
+
+-    [click_here](https://github.com/alsafa012/restaurant-project-server)
